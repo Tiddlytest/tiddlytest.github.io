@@ -129,6 +129,8 @@ Error message and password prompt
 
 <li>$:/core</li>
 
+<li>$:/core/save/all</li>
+
 <li>$:/DefaultTiddlers</li>
 
 <li>$:/Import</li>
@@ -147,31 +149,7 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/NewTiddlerForm</li>
-
-<li>$:/state/showeditpreview</li>
-
-<li>$:/state/tab--1963855381</li>
-
-<li>$:/state/tab--2112689675</li>
-
-<li>$:/state/tab--959111941</li>
-
-<li>$:/state/tab-1749438307</li>
-
-<li>$:/state/tab/moresidebar-401116514</li>
-
-<li>$:/state/tab/sidebar--1835078512</li>
-
 <li>$:/StoryList</li>
-
-<li>$:/temp/info-plugin</li>
-
-<li>$:/temp/newuser</li>
-
-<li>$:/temp/PersonDBeditPerson</li>
-
-<li>$:/temp/search</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
@@ -6331,6 +6309,13 @@ Error message and password prompt
     }
 }</pre>
 </div>
+<div bag="default" created="20160125214806068" creator="HegartDmishiv" modified="20160330151745206" modifier="HegartDmishiv" purpose="Prevents the TOC state and other temporary settings from being saved when the TiddlyWiki is saved. See [[this discussion|https://groups.google.com/forum/#!topic/tiddlywiki/F_laLj-y5lk]] for details, and [[my screencast video|https://youtu.be/PmFyoEqSC4I]] for a step-by-step guide." revision="0" title="$:/core/save/all">
+<pre>\define saveTiddlerFilter()
+[is[tiddler]] -[prefix[$:/state/]] -[prefix[$:/temp/]] -[[$:/HistoryList]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]] $(publishFilter)$
+\end
+{{$:/core/templates/tiddlywiki5.html}}
+</pre>
+</div>
 <div created="20160314135531606" modified="20160322221325764" title="$:/DefaultTiddlers">
 <pre>[[Main Menu]]
 </pre>
@@ -6338,7 +6323,7 @@ Error message and password prompt
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[Static Field Generator (Text to Tags)]]</pre>
+# [[$:/core/save/all]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -6628,55 +6613,8 @@ exports.newtiddler = NewtiddlerWidget;
 <div created="20160314134440711" modified="20160322200440052" title="$:/SiteTitle">
 <pre>&lt;center&gt;TiddlyCRM playground&lt;/center&gt;</pre>
 </div>
-<div add_or_create_tag="create" created="20160330013901078" description="" modified="20160330040718696" name_temp="" tag_temp="Custom Macros" tags="" title="$:/state/NewTiddlerForm">
+<div list="[[Main Menu]]" title="$:/StoryList">
 <pre></pre>
-</div>
-<div created="20160322215057652" modified="20160324044338440" title="$:/state/showeditpreview">
-<pre>yes</pre>
-</div>
-<div created="20160330025157134" modified="20160330025206380" title="$:/state/tab--1963855381">
-<pre>$:/core/ui/ControlPanel/Palette</pre>
-</div>
-<div created="20160330025210697" modified="20160330025210697" title="$:/state/tab--2112689675">
-<pre>$:/core/ui/ControlPanel/Advanced</pre>
-</div>
-<div created="20160330025213858" modified="20160330025229511" title="$:/state/tab--959111941">
-<pre>$:/core/ui/ControlPanel/LoadedModules</pre>
-</div>
-<div created="20160330025153414" modified="20160330025207411" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Info</pre>
-</div>
-<div created="20160321140052359" modified="20160330032643009" title="$:/state/tab/moresidebar-401116514">
-<pre>$:/core/ui/MoreSideBar/Shadows</pre>
-</div>
-<div created="20160314135326051" modified="20160330035657617" title="$:/state/tab/sidebar--1835078512">
-<pre>$:/core/ui/SideBar/Open</pre>
-</div>
-<div list="[[Organisation List]] $:/Import [[Static Field Generator (Text to Tags)]]" title="$:/StoryList">
-<pre></pre>
-</div>
-<div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;$:/info/browser&quot;: {
-            &quot;title&quot;: &quot;$:/info/browser&quot;,
-            &quot;text&quot;: &quot;yes&quot;
-        },
-        &quot;$:/info/node&quot;: {
-            &quot;title&quot;: &quot;$:/info/node&quot;,
-            &quot;text&quot;: &quot;no&quot;
-        }
-    }
-}</pre>
-</div>
-<div created="20160330020435261" modified="20160330020445208" tags="Admin" title="$:/temp/newuser">
-<pre></pre>
-</div>
-<div created="20160330023420264" modified="20160330024529933" title="$:/temp/PersonDBeditPerson">
-<pre>Dude</pre>
-</div>
-<div created="20160314135222775" modified="20160330062711031" title="$:/temp/search">
-<pre>org</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.11">
 <pre>{
@@ -7105,7 +7043,6 @@ Fairly straightforward, this is the macro definition, with four parameters. He u
 </div>
 <div created="20160330060418614" modified="20160330062659354" tags="[[Current Developments]]" title="Static Field Generator (Text to Tags)">
 <pre>
-
 
 
 !!New Organisation:&lt;br&gt;&lt;br&gt; &lt;$edit-text tiddler='Organisation List' field='tag_temp' placeholder='Enter Organisation Name'/&gt;&lt;$fieldmangler tiddler='Organisation List'&gt;

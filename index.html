@@ -276,8 +276,8 @@ Error message and password prompt
 &lt;&lt;list-links filter:&quot;[tag{!!title}]&quot;&gt;&gt;
 \end</pre>
 </div>
-<div created="20160403093304247" modified="20160403093522080" title="$:/_Temp/foobar" type="application/x-tiddler-dictionary">
-<pre>foo</pre>
+<div city="qux" created="20160403095302464" modified="20160403095302464" title="$:/_Temp/foobar">
+<pre></pre>
 </div>
 <div created="20160322221943653" modified="20160322221943653" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/close-all">
 <pre>show</pre>
@@ -6957,19 +6957,27 @@ Press this button and the tiddler will be created and opened so you can view it.
 <div city="Foo" created="20160403091601068" modified="20160403091624369" tags="foobar" title="foo">
 <pre></pre>
 </div>
-<div created="20160403091351066" list="foo bar baz qux quux corge grault garply" modified="20160403094032823" tags="[[Current Developments]]" title="foobar">
+<div created="20160403091351066" list="foo bar baz qux quux corge grault garply" modified="20160403095638950" tags="[[Current Developments]]" title="foobar">
 <pre>This little experiment should hopefully allow us to populate a combobox from all the tiddlers which have the &lt;&lt;tag foobar&gt;&gt;tag.
 
 Below is a ``&lt;&lt;taggly&gt;&gt;`` list of all tiddlers which have the &lt;&lt;tag foobar&gt;&gt;tag.
 &lt;&lt;taggly&gt;&gt;
 
 Here is a ``&lt;$select&gt;`` widget populated from the list above.
-&lt;$select tiddler=&quot;$:/_Temp/foobar&quot; default=&quot;Foo&quot;&gt;
+&lt;$select tiddler=&quot;$:/_Temp/foobar&quot; field=&quot;city&quot; default=&quot;Foo&quot;&gt;
 &lt;$list filter=&quot;[tag[foobar]]&quot;&gt;
 &lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field=&quot;city&quot;/&gt;&lt;/option&gt;
 &lt;/$list&gt;
 &lt;/$select&gt;
-It currently stores its information in the ``text`` field of the [[$:/_Temp/foobar]] system tiddler.</pre>
+It gets its options from the ``city`` field of each &lt;&lt;tag foobar&gt;&gt;tiddler. It stores its information in the ``city`` field of the [[$:/_Temp/foobar]] system tiddler. Here's the code for it...
+
+```
+&lt;$select tiddler=&quot;$:/_Temp/foobar&quot; field=&quot;city&quot; default=&quot;Foo&quot;&gt;
+&lt;$list filter=&quot;[tag[foobar]]&quot;&gt;
+&lt;option value=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field=&quot;city&quot;/&gt;&lt;/option&gt;
+&lt;/$list&gt;
+&lt;/$select&gt;
+```</pre>
 </div>
 <div created="20160322221418852" modified="20160322221743342" tags="[[Closed Developments]]" title="Generate a Main Menu">
 <pre>Generate a [[Main Menu]], [[Closed Development]] and [[Current Development]] architecture.</pre>

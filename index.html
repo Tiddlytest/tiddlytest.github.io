@@ -6647,7 +6647,7 @@ exports.newtiddler = NewtiddlerWidget;
 <div created="20160314134440711" modified="20160322200440052" title="$:/SiteTitle">
 <pre>&lt;center&gt;TiddlyCRM playground&lt;/center&gt;</pre>
 </div>
-<div list="$:/_Temp/foobar foobar [[Main Menu]]" title="$:/StoryList">
+<div list="foobar [[Main Menu]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.11">
@@ -6957,7 +6957,7 @@ Press this button and the tiddler will be created and opened so you can view it.
 <div city="Foo" created="20160403091601068" modified="20160403091624369" tags="foobar" title="foo">
 <pre></pre>
 </div>
-<div created="20160403091351066" list="foo bar baz qux quux corge grault garply" modified="20160403100543203" tags="[[Current Developments]]" title="foobar">
+<div created="20160403091351066" list="foo bar baz qux quux corge grault garply" modified="20160403105218655" tags="[[Current Developments]]" title="foobar">
 <pre>This little experiment should hopefully allow us to populate a combobox from all the tiddlers which have the &lt;&lt;tag foobar&gt;&gt;tag.
 
 Below is a ``&lt;&lt;taggly&gt;&gt;`` list of all tiddlers which have the &lt;&lt;tag foobar&gt;&gt;tag.
@@ -6993,7 +6993,14 @@ I just noticed that this currently stores the ``title`` of the selected option. 
 &lt;option value={{!!city}}&gt;&lt;$view field=&quot;city&quot;/&gt;&lt;/option&gt;
 &lt;/$list&gt;
 &lt;/$select&gt;
-```</pre>
+```
+
+&lt;hr&gt;
+
+!! Notes &amp; Issues
+
+* This solution presumes that every tiddler in the filtered list will have a ``city`` field. If a tiddler doesn't have one, the option for that tiddler will still be listed in the dropdown, but will be blank.
+* This solution also doesn't check for uniqueness, so if the same ``city`` value appears in more than one tiddler, that city will be listed multiple times in the dropdown.</pre>
 </div>
 <div created="20160322221418852" modified="20160322221743342" tags="[[Closed Developments]]" title="Generate a Main Menu">
 <pre>Generate a [[Main Menu]], [[Closed Development]] and [[Current Development]] architecture.</pre>

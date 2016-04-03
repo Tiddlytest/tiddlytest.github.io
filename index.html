@@ -117,6 +117,10 @@ Error message and password prompt
 
 <p>This <a class="tc-tiddlylink-external" href="http://tiddlywiki.com" target="_blank">TiddlyWiki</a> contains the following tiddlers:</p><p><ul>
 
+<li>$:/_Macros/combobox</li>
+
+<li>$:/_Macros/combobox/info</li>
+
 <li>$:/_Macros/taggly</li>
 
 <li>$:/_Temp/foobar</li>
@@ -271,6 +275,220 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
+<div created="20160403112128920" modified="20160403112340939" tags="$:/tags/Macro" title="$:/_Macros/combobox">
+<pre>\define combobox(
+     filter:&quot;[all[]] -[is[system]]&quot;
+placeholder:&quot;enter or select an item...&quot;
+    tiddler:&quot;$:/temp/combobox/input&quot;
+      field:&quot;&quot;
+      index:&quot;&quot;
+         id:&quot;&quot; 
+      match:&quot;no&quot;
+      focus:&quot;no&quot;
+ focusPopup:&quot;no&quot;
+   position:&quot;&quot;
+     retain:&quot;no&quot;
+   editsize:&quot;25&quot;
+  editclass:&quot;&quot;
+    edittip:&quot;&quot;
+   listsize:&quot;10&quot;
+  listclass:&quot;&quot;
+    listtip:&quot;&quot;
+   template:&quot;&lt;&lt;toc-caption&gt;&gt;&quot;
+    oklabel:&quot;{{$:/core/images/done-button}}&quot;
+      oktip:&quot;accept input&quot;
+   okaction:&quot;&quot; 
+clickaction:&quot;&quot; 
+)
+&lt;style&gt;
+   .tt-combo-wrapper                        { position:relative; display:inline-block; text-align:left; }
+   .tt-combo-wrapper       button           { visibility:visible !important; display:inline !important; }
+   .tt-combo-wrapper       .tt-combo-button { position:absolute; top:0; right:0; }
+   .tt-combo-wrapper       .tt-combo-button { opacity:0.0; transition: opacity 1.0s; }
+   .tt-combo-wrapper:hover .tt-combo-button { opacity:1.0; transition: opacity 0.5s; }
+   .tt-combo-list { border:1px solid #999; background:white; overflow-y:auto; overflow-x:hidden; 
+        height:calc($listsize$ * 1.2em); line-height:1.2em; white-space:nowrap; }
+   .tt-combo-item button       { width:100%; visibility:visible; text-align:left; margin-left:2px; }
+   .tt-combo-item button:hover { background:lightgray; color:black; }
+   .tt-combo-item button img   { width:1em; height:1em; }
+   .tt-combo-item button svg   { width:1em; height:1em; }
+&lt;/style&gt;
+&lt;span class=&quot;tt-combo-wrapper&quot;&gt;
+   &lt;$vars popupID=&lt;&lt;qualify &quot;$:/state/popup/combo/$tiddler$/$field$-$id$&quot;&gt;&gt; &gt;
+   &lt;!-- EDIT FIELD --&gt;
+   &lt;$set name=&quot;focusPopup&quot; filter=&quot;$focusPopup$ -[[no]] -[[false]]&quot; value=&lt;&lt;popupID&gt;&gt; emptyValue=&quot;&quot;&gt;
+   &lt;span title=&quot;&quot;&quot;$edittip$&quot;&quot;&quot;&gt;
+      &lt;$edit-text tag=&quot;input&quot; focus=&quot;&quot;&quot;$focus$&quot;&quot;&quot; focusPopup=&lt;&lt;focusPopup&gt;&gt;
+         class=&quot;&quot;&quot;tc-popup-handle $editclass$&quot;&quot;&quot; size=&quot;&quot;&quot;$editsize$&quot;&quot;&quot;
+         tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot; placeholder=&quot;&quot;&quot;$placeholder$&quot;&quot;&quot; default=&quot;&quot; /&gt;
+   &lt;/span&gt;
+   &lt;/$set&gt;
+   &lt;!-- GET LIST ITEMS FROM FILTER WITH OPTIONAL TITLE SEARCH FILTER --&gt;
+   &lt;$set name=&quot;filter&quot; filter=&quot;&quot;&quot;$match$ -[[no]]&quot;&quot;&quot;
+       value=&quot;&quot;&quot;$filter$ +[search:title{$tiddler$!!$field$}]&quot;&quot;&quot; emptyValue=&quot;&quot;&quot;$filter$&quot;&quot;&quot;&gt;
+   &lt;$set name=&quot;items&quot; filter=&lt;&lt;filter&gt;&gt;&gt;
+   &lt;!-- OK/CANCEL BUTTONS --&gt;
+   &lt;$reveal state=&quot;&quot;&quot;$tiddler$!!$field$&quot;&quot;&quot; type=&quot;nomatch&quot; text=&quot;&quot;&gt; &lt;!-- HAS INPUT --&gt;
+      &lt;$reveal text=&quot;&quot;&quot;$okaction$&quot;&quot;&quot; type=&quot;nomatch&quot; default=&quot;&quot;&gt;    &lt;!-- HAS OK ACTION --&gt;
+         &lt;$button class=&quot;tt-combo-button&quot; style=&quot;right:4em&quot; tooltip=&quot;&quot;&quot;$oktip$&quot;&quot;&quot;&gt;
+            $oklabel$ $okaction$
+            &lt;$action-setfield $tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; $field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot; $value=&quot;&quot; /&gt;
+         &lt;/$button&gt;
+      &lt;/$reveal&gt;
+      &lt;$button class=&quot;tt-combo-button&quot; style=&quot;right:2em&quot; tooltip=&quot;clear input&quot;&gt;
+         {{$:/core/images/cancel-button}}
+         &lt;$action-setfield $tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; $field=&quot;&quot;&quot;$field$&quot;&quot;&quot; index=&quot;&quot;&quot;$index$&quot;&quot;&quot; $value=&quot;&quot; /&gt;
+      &lt;/$button&gt;
+   &lt;/$reveal&gt;
+   &lt;!-- TOGGLE LIST BUTTON --&gt;
+   &lt;$reveal text=&lt;&lt;items&gt;&gt; type=&quot;match&quot; default=&quot;&quot;&gt; &lt;!-- DISABLE BUTTON --&gt;
+      &lt;$button class=&quot;tt-combo-button&quot; style=&quot;right:0em&quot; tooltip=&quot;no list&quot;&gt;
+         &lt;span style=&quot;opacity:0.3&quot;&gt;{{$:/core/images/down-arrow}}&lt;/span&gt;
+      &lt;/$button&gt;
+   &lt;/$reveal&gt;
+   &lt;$reveal text=&lt;&lt;items&gt;&gt; type=&quot;nomatch&quot; default=&quot;&quot;&gt; &lt;!-- DISPLAY SHOW OR HIDE BUTTON --&gt;
+      &lt;$set name=&quot;show&quot; filter=&quot;[title&lt;popupID&gt;get[text]]&quot;&gt;
+      &lt;$reveal text=&lt;&lt;show&gt;&gt; type=&quot;match&quot; default=&quot;&quot;&gt;
+         &lt;$button popup=&lt;&lt;popupID&gt;&gt; class=&quot;tt-combo-button&quot; style=&quot;right:0em&quot; tooltip=&quot;show list&quot;&gt;
+            {{$:/core/images/down-arrow}}
+         &lt;/$button&gt;
+      &lt;/$reveal&gt;
+      &lt;$reveal text=&lt;&lt;show&gt;&gt; type=&quot;nomatch&quot; default=&quot;&quot;&gt;
+         &lt;$button popup=&lt;&lt;popupID&gt;&gt; class=&quot;tt-combo-button&quot; style=&quot;right:0em&quot; tooltip=&quot;hide list&quot;&gt;
+            {{$:/core/images/close-button}}
+         &lt;/$button&gt;
+      &lt;/$reveal&gt;
+      &lt;/$set&gt;
+   &lt;/$reveal&gt;
+   &lt;br&gt;
+   &lt;!-- LISTBOX POPUP --&gt;
+   &lt;$reveal text=&lt;&lt;items&gt;&gt; type=&quot;nomatch&quot; default=&quot;&quot;&gt;   &lt;!-- IF LIST IS NOT EMPTY --&gt;
+      &lt;$set name=&quot;type&quot; filter=&quot;[title[x$position$x]] -[[xx]]&quot; value=&quot;popup&quot; emptyValue=&quot;nomatch&quot;&gt;
+      &lt;$reveal state=&lt;&lt;popupID&gt;&gt; type=&lt;&lt;type&gt;&gt; text=&quot;&quot; position=&quot;&quot;&quot;$position$&quot;&quot;&quot; style=&quot;position:absolute; z-index:999;&quot; retain=&quot;$retain$&quot;&gt;
+         &lt;!-- LISTBOX OUTLINE AND SCROLLBAR --&gt;
+         &lt;div class=&quot;&quot;&quot;tt-combo-list $listclass$&quot;&quot;&quot; title=&quot;&quot;&quot;$listtip$&quot;&quot;&quot;&gt;
+            &lt;$list filter=&lt;&lt;items&gt;&gt;&gt;
+               &lt;!-- LISTBOX ITEM --&gt;
+               &lt;div class=&quot;tt-combo-item&quot;&gt;
+                  &lt;$vars thistitle={{!!title}} thistags={{!!tags}}&gt;
+                  &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&lt;&lt;combobox_maketip&gt;&gt;&gt;
+                     &lt;!-- DISPLAY ITEM, SET FIELD, PEFORM ACTION (IF ANY) --&gt;
+                     $template$
+                     &lt;$action-setfield $tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; $field=&quot;&quot;&quot;$field$&quot;&quot;&quot; $index=&quot;&quot;&quot;$index$&quot;&quot;&quot; $value=&lt;&lt;currentTiddler&gt;&gt;/&gt;
+                     $clickaction$
+                  &lt;/$button&gt;
+                  &lt;/$vars&gt;
+               &lt;/div&gt;
+            &lt;/$list&gt;
+         &lt;/div&gt;
+      &lt;/$reveal&gt;
+      &lt;/$set&gt;
+   &lt;/$reveal&gt;
+   &lt;/$set&gt;
+   &lt;/$set&gt;
+   &lt;/$vars&gt;
+&lt;/span&gt;
+\end
+\define combobox_maketip() title=&quot;$(thistitle)$&quot; tags=[$(thistags)$]
+
+@@.smaller &lt;pre&gt;&lt;$view field=&quot;text&quot;/&gt;&lt;/pre&gt;@@</pre>
+</div>
+<div created="20160403114148838" modified="20160403114414836" tags="$:/_Macros/combobox [[Current Developments]]" title="$:/_Macros/combobox/info">
+<pre>\define showresult(tid:&quot;$:/temp/combobox/input&quot;,field:&quot;text&quot;)
+@@display:block;font-size:70%;
+&lt;$link to=&quot;$tid$&quot;&gt;$tid$!!$field$&lt;/$link&gt;=&lt;$text text={{$tid$!!$field$}}/&gt;
+@@
+\end
+
+| Author|Eric Shulman|
+| Source|http://tiddlytools.com/#macros/combobox|
+| Documentation|http://tiddlytools.com/#macros/combobox/info|
+| License|http://tiddlytools.com/#LegalStatements|
+| Revision|1.0|
+!!!About
+&lt;&lt;&lt;
+The ``&lt;&lt;combobox&gt;&gt;`` macro combines an ``&lt;$edit-text&gt;`` widget with a ``&lt;$select&gt;`` listbox that displays a set of tiddler titles or other filter-based list output.  This allows the user to either ''select an existing value'' from the listbox or ''enter a new value'' in the edit field.  The result is saved to the specified tiddler and field.
+&lt;&lt;&lt;
+!!!Usage
+&lt;&lt;&lt;
+```
+&lt;&lt;combobox list tiddler field id placeholder
+   match focus focusPopup position
+   editsize editclass edittip
+   listsize listclass listtip
+   oklabel oktip okaction&gt;&gt;
+```
+where:
+
+* ''filter'' =``[all[]] -[is[system]]``&lt;br&gt;Filter syntax used to generate the listbox contents.
+* ''tiddler'' =``$:/temp/combobox/input`` and ''field'' =``text``&lt;br&gt;Target location in which to save result.
+* ''id'' (optional)&lt;br&gt;If multiple uses of &amp;lt;&amp;lt;combobox&amp;gt;&amp;gt; are embedded //in the same tiddler//, you can provide a unique id value that -- combined with the tiddler and field values -- ensures that each instance is handled separately.
+* ''placeholder'' =``enter or select an item...``&lt;br&gt;Initial value when target tiddler/field does not exist.
+* ''match'' (optional)&lt;br&gt;&quot;yes&quot; filters the listbox to only show items that match the current edit field input
+* ''focus'' (optional)&lt;br&gt;&quot;yes&quot; moves the input focus to the edit field when created
+* ''focusPopup'' (optional)&lt;br&gt;&quot;yes&quot; automatically displays the listbox when the edit field has focus
+* ''position'' (optional)&lt;br&gt;sets position of listbox popup, relative to edit field.  See RevealWidget documentation for allowed keyword values.
+* ''editsize'' =``25`` and ''editclass'' (optional) and ''edittip'' (optional)&lt;br&gt;Number of characters, CSS class, and mouseover tooltip text to be used for the edit field
+* ''listsize'' =``10`` and ''listclass'' (optional) and ''listtip'' (optional)&lt;br&gt;Number of lines, CSS class, and mouseover tooltip text to be used for the listbox
+* ''oklabel'' =``{{$:/core/images/done-button}}``&lt;br&gt;Text or image to appear on OK action button (when shown).
+* ''oktip'' =``apply input``&lt;br&gt;Text to display as tooltip over OK action button (when shown).
+* ''okaction'' (optional)&lt;br&gt;If defined, an action button appears when the edit field input is non-blank.  This parameter should contain wiki syntax that uses the result value stored in the target tiddler/field as a parameter for one or more //action widgets// and/or //macros that invoke action widgets//.
+&lt;&lt;&lt;
+!!!Examples
+&lt;blockquote&gt;
+
+List all non-system tiddlers (default filter). Store result in ``$:/temp/combobox/input`` (default target):
+
+&lt;&lt;&lt;
+```
+&lt;&lt;combobox&gt;&gt;
+```
+&lt;&lt;combobox&gt;&gt;
+&lt;&lt;&lt;
+
+List selected tiddlers (custom filter). Store result in ``$:/temp/other/target!!somefield`` (custom target)
+
+&lt;&lt;&lt;
+```
+&lt;&lt;combobox tiddler:&quot;$:/temp/other/target&quot; field:&quot;somefield&quot; list:&quot;[prefix[TiddlyTools/]]&quot;&gt;&gt;
+```
+&lt;&lt;combobox tiddler:&quot;$:/temp/other/target&quot; field:&quot;somefield&quot; list:&quot;[prefix[TiddlyTools/]]&quot;&gt;&gt;
+&lt;&lt;&lt;
+
+Search all tiddlers including shadows (custom filter), with auto-popup listbox. Store result in ``$:/temp/combobox/goto`` (custom target). OK button navigates to selected tiddler (custom action):
+
+&lt;&lt;&lt;
+```
+&lt;&lt;combobox tiddler:&quot;$:/temp/combobox/goto&quot; list:&quot;[all[tiddlers+shadows]]&quot;
+   match:yes focusPopup:yes editsize:40 listsize:5
+   oktip:&quot;View this tiddler&quot;
+   okaction:&quot;&quot;&quot;&lt;$action-navigate $to={{$:/temp/combobox/goto}}/&gt;&quot;&quot;&quot;&gt;&gt;
+```
+&lt;&lt;combobox tiddler:&quot;$:/temp/combobox/goto&quot; list:&quot;[all[tiddlers+shadows]]&quot;
+   match:yes focusPopup:yes editsize:40 listsize:5
+   oktip:&quot;View this tiddler&quot;
+   okaction:&quot;&quot;&quot;&lt;$action-navigate $to={{$:/temp/combobox/goto}}/&gt;&quot;&quot;&quot;&gt;&gt;
+&lt;&lt;&lt;
+
+Search all tiddlers including shadows (custom filter), with auto-popup listbox. Store result in ``$:/temp/combobox/show`` (custom target). OK button invokes [[notify macro|TiddlyTools/Macros/notify]] to show result (custom macro performs multiple actions):
+
+&lt;&lt;&lt;
+```
+&lt;&lt;combobox tiddler:&quot;$:/temp/combobox/show&quot; list:&quot;[all[tiddlers+shadows]]&quot;
+   match:yes focusPopup:yes position:above editsize:40 listsize:5
+   oklabel:&quot;ok&quot;
+   oktip:&quot;show this input&quot;
+   okaction:&quot;&quot;&quot;&lt;$macrocall $name=&quot;notify&quot; msg={{$:/temp/combobox/show}}/&gt;&quot;&quot;&quot;&gt;&gt;
+```
+&lt;&lt;combobox tiddler:&quot;$:/temp/combobox/show&quot; list:&quot;[all[tiddlers+shadows]]&quot;
+   match:yes focusPopup:yes position:above editsize:40 listsize:5
+   oklabel:&quot;ok&quot;
+   oktip:&quot;show this input&quot;
+   okaction:&quot;&quot;&quot;&lt;$macrocall $name=&quot;notify&quot; msg={{$:/temp/combobox/show}}/&gt;&quot;&quot;&quot;&gt;&gt;
+&lt;&lt;&lt;
+
+&lt;/blockquote&gt;</pre>
+</div>
 <div created="20160130150408673" creator="HegartDmishiv" modified="20160305200926470" modifier="HegartDmishiv" origin="[[Steve Schneider|https://dl.dropboxusercontent.com/s/tk91wqty552z6z1/designwrite.html#taggly]]" purpose="For quick insertion of a simple filtered list, based on the title of the current tiddler." tags="$:/tags/Macro [[Custom Macros]]" title="$:/_Macros/taggly" type="text/vnd.tiddlywiki" usage="``&lt;&lt;taggly&gt;&gt;``">
 <pre>\define taggly()
 &lt;&lt;list-links filter:&quot;[tag{!!title}]&quot;&gt;&gt;
@@ -6647,7 +6865,7 @@ exports.newtiddler = NewtiddlerWidget;
 <div created="20160314134440711" modified="20160322200440052" title="$:/SiteTitle">
 <pre>&lt;center&gt;TiddlyCRM playground&lt;/center&gt;</pre>
 </div>
-<div list="foobar [[Main Menu]]" title="$:/StoryList">
+<div list="[[Main Menu]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.11">

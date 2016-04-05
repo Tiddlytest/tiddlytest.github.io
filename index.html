@@ -291,6 +291,8 @@ Error message and password prompt
 
 <li>Hegart's first commit</li>
 
+<li>Helen Clark</li>
+
 <li>Henry White</li>
 
 <li>Indie Zhang</li>
@@ -333,7 +335,9 @@ Error message and password prompt
 
 <li>Jayden Zhou</li>
 
-<li>Johnny</li>
+<li>Jerome Kaino</li>
+
+<li>John Doe</li>
 
 <li>Joseph Campbell</li>
 
@@ -425,6 +429,8 @@ Error message and password prompt
 
 <li>Riley Campbell</li>
 
+<li>Ritchie McCaw</li>
+
 <li>Ruby Anderson</li>
 
 <li>Ryan Xu</li>
@@ -456,6 +462,8 @@ Error message and password prompt
 <li>Sophie Walker</li>
 
 <li>Static Field Generator (Text to Tags)</li>
+
+<li>Storm Purvis</li>
 
 <li>TargetTiddler</li>
 
@@ -709,7 +717,7 @@ Search all tiddlers including shadows (custom filter), with auto-popup listbox. 
 <div city="Garply" created="20160403095302464" modified="20160403231424684" title="$:/_Temp/foobar">
 <pre></pre>
 </div>
-<div created="20160405082036248" employer="Auckland Construction Company (1996), Limited" firstname="Johnny" gender="Male" modified="20160405093306907" surname="Adams" tags="SampleDataExtras Menu Person" title="$:/_Temp/Person">
+<div created="20160405082036248" employer="" firstname="Helen" gender="Male" modified="20160405111836457" name_temp="" surname="Clark" tags="" title="$:/_Temp/Person">
 <pre></pre>
 </div>
 <div created="20160404225927451" modified="20160405024803853" tags="$:/tags/ViewTemplate" title="$:/_Template/viewPerson">
@@ -7094,7 +7102,7 @@ exports.newtiddler = NewtiddlerWidget;
 <div created="20160314134440711" modified="20160322200440052" title="$:/SiteTitle">
 <pre>&lt;center&gt;TiddlyCRM playground&lt;/center&gt;</pre>
 </div>
-<div list="[[Main Menu]] [[Add Person]]" title="$:/StoryList">
+<div list="[[Add Person]] [[Main Menu]] [[Reverse Engineering QuickTid]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.11">
@@ -7253,21 +7261,23 @@ The latest batch of SampleData can be found in our [[SampleData playground|https
 <div created="20160314135437410" modified="20160322215832126" tags="Organisations" title="Acme Widget Company">
 <pre></pre>
 </div>
-<div caption="Add Person..." created="20160403082028920" entity="Person" modified="20160405090836189" tags="Add SampleDataExtras [[Current Developments]]" title="Add Person">
-<pre>* ''First name:'' &lt;$edit-text tiddler=&quot;$:/_Temp/Person&quot; field=&quot;firstname&quot; placeholder=&quot;Type first name here...&quot; /&gt;
+<div caption="Add Person..." created="20160403082028920" entity="Person" modified="20160405105812500" tags="Add SampleDataExtras [[Current Developments]]" title="Add Person">
+<pre>\define newtitlemacro() $(firstname)$ $(surname)$
+\define newtagsmacro() Person NewData [[$(employer)$]]
+
+* ''First name:'' &lt;$edit-text tiddler=&quot;$:/_Temp/Person&quot; field=&quot;firstname&quot; placeholder=&quot;Type first name here...&quot; /&gt;
 * ''Surname:'' &lt;$edit-text tiddler=&quot;$:/_Temp/Person&quot; field=&quot;surname&quot; placeholder=&quot;Type surname here...&quot; /&gt;
 * ''Gender:'' &lt;$radio  tiddler=&quot;$:/_Temp/Person&quot; field=&quot;gender&quot; value=&quot;Male&quot;&gt;Male&lt;/$radio&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;$radio  tiddler=&quot;$:/_Temp/Person&quot; field=&quot;gender&quot; value=&quot;Female&quot;&gt;Female&lt;/$radio&gt;
 * ''Employee of:'' &lt;&lt;combobox tiddler:&quot;$:/_Temp/Person&quot; field:&quot;employer&quot; placeholder:&quot;Type or select employer...&quot; filter:&quot;[tag[Organisation]]&quot;&gt;&gt;
 
 
 &lt;$button&gt;Create Tiddler
-
-&lt;$action-setfield $tiddler={{$:/_Temp/Person!!firstname}} ] surname={{$:/_Temp/Person!!surname}} gender={{$:/_Temp/Person!!gender}}  tags={{$:/_Temp/Person!!tags}}/&gt;
-
-&lt;$action-navigate $to={{$:/_Temp/Person!!firstname}}/&gt;
-
-
-
+&lt;$vars firstname={{$:/_Temp/Person!!firstname}}
+       surname={{$:/_Temp/Person!!surname}}
+       employer={{$:/_Temp/Person!!employer}} &gt;
+&lt;$action-setfield $tiddler=&lt;&lt;newtitlemacro&gt;&gt; firstname={{$:/_Temp/Person!!firstname}} surname={{$:/_Temp/Person!!surname}} gender={{$:/_Temp/Person!!gender}} tags=&lt;&lt;newtagsmacro&gt;&gt; /&gt;
+&lt;$action-navigate $to=&lt;&lt;newtitlemacro&gt;&gt; /&gt;
+&lt;/$vars&gt;
 &lt;/$button&gt;
 
 
@@ -7656,6 +7666,9 @@ Generate New Contact
 <div created="20160323000036817" modified="20160327092554060" tags="[[Closed Developments]]" title="Hegart's first commit">
 <pre>Just messing around with GitKraken and Andrew's new hybrid DB/GH method of hosting a TiddlyWiki. </pre>
 </div>
+<div created="20160405111838679" firstname="Helen" gender="Male" modified="20160405111838681" surname="Clark" tags="Person NewData" title="Helen Clark">
+<pre></pre>
+</div>
 <div firstname="Henry" gender="Male" imageurl="http://dl.dropboxusercontent.com/s/infrahrw8oiy9qo/gombinoscope1.png" surname="White" tags="[[Henderson Used Car Company (1996), Limited]] Person SampleData" title="Henry White">
 <pre></pre>
 </div>
@@ -7719,7 +7732,10 @@ Generate New Contact
 <div firstname="Jayden" gender="Male" imageurl="http://dl.dropboxusercontent.com/s/f3x47mk7bnfv9r6/gombinoscope3.png" surname="Zhou" tags="[[West Coast Road Advocacy Society, Incorporated]] Person SampleData" title="Jayden Zhou">
 <pre></pre>
 </div>
-<div ]="true" created="20160405090845496" gender="Male" modified="20160405093319692" surname="Adams" tags="SampleDataExtras Menu Person" title="Johnny">
+<div created="20160405111116980" firstname="Jerome" gender="Male" modified="20160405111116982" surname="Kaino" tags="Person NewData [[All Blacks]]" title="Jerome Kaino">
+<pre></pre>
+</div>
+<div created="20160405103621734" firstname="John" gender="Male" modified="20160405105450713" surname="Doe" tags="Person NewData [[White As Doe]]" title="John Doe">
 <pre></pre>
 </div>
 <div firstname="Joseph" gender="Male" imageurl="http://dl.dropboxusercontent.com/s/q5cvrds6qecm7c5/gombinoscope2.png" surname="Campbell" tags="[[Broadway Fashion Company, Limited]] Person SampleData" title="Joseph Campbell">
@@ -7984,6 +8000,9 @@ Fairly straightforward, this is the macro definition, with four parameters. He u
 <div firstname="Riley" gender="Male" imageurl="http://dl.dropboxusercontent.com/s/mw949ql1z5m497g/129534%3A45AD3DE3.png" surname="Campbell" tags="Person SampleData" title="Riley Campbell">
 <pre></pre>
 </div>
+<div created="20160405105633778" firstname="Ritchie" gender="Male" modified="20160405105816865" surname="McCaw" tags="Person NewData [[All Blacks]]" title="Ritchie McCaw">
+<pre></pre>
+</div>
 <div firstname="Ruby" gender="Female" imageurl="http://dl.dropboxusercontent.com/s/6j0oggt1h3wy0vt/monoface4.png" surname="Anderson" tags="Person SampleData" title="Ruby Anderson">
 <pre></pre>
 </div>
@@ -8052,6 +8071,9 @@ Tag to add: &lt;$select tiddler='$Organisation List' field='tag_temp'&gt;
 &lt;/$reveal&gt;
 
 </pre>
+</div>
+<div created="20160405110009019" firstname="Storm" gender="Female" modified="20160405110009022" surname="Purvis" tags="Person NewData [[Silver Ferns]]" title="Storm Purvis">
+<pre></pre>
 </div>
 <div created="20160323234153270" modified="20160324042546003" title="TargetTiddler">
 <pre>Product 2</pre>

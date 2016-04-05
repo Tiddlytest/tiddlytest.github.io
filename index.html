@@ -125,6 +125,8 @@ Error message and password prompt
 
 <li>$:/_Temp/foobar</li>
 
+<li>$:/_Temp/Person</li>
+
 <li>$:/_Template/viewPerson</li>
 
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/close-all</li>
@@ -172,6 +174,8 @@ Error message and password prompt
 <li>Abigail Johnston</li>
 
 <li>Acme Widget Company</li>
+
+<li>Add Person</li>
 
 <li>Alexander Liu</li>
 
@@ -328,6 +332,8 @@ Error message and password prompt
 <li>Jayden Wu</li>
 
 <li>Jayden Zhou</li>
+
+<li>Johnny</li>
 
 <li>Joseph Campbell</li>
 
@@ -701,6 +707,9 @@ Search all tiddlers including shadows (custom filter), with auto-popup listbox. 
 \end</pre>
 </div>
 <div city="Garply" created="20160403095302464" modified="20160403231424684" title="$:/_Temp/foobar">
+<pre></pre>
+</div>
+<div created="20160405082036248" employer="Auckland Construction Company (1996), Limited" firstname="Johnny" gender="Male" modified="20160405090843920" surname="Adams" tags="SampleDataExtras Menu" title="$:/_Temp/Person">
 <pre></pre>
 </div>
 <div created="20160404225927451" modified="20160405024803853" tags="$:/tags/ViewTemplate" title="$:/_Template/viewPerson">
@@ -6795,104 +6804,7 @@ Search all tiddlers including shadows (custom filter), with auto-popup listbox. 
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[Maia Wang]]
-# [[Jackson White]]
-# [[Jayden Mitchell]]
-# [[Charlotte Campbell]]
-# [[Jackson Patel]]
-# [[Jackson Chen]]
-# [[William Brown]]
-# [[Luca Brown]]
-# [[Indie Zhang]]
-# [[Jayden Jones]]
-# [[Ryan Young]]
-# [[Blake Singh]]
-# [[Joseph Smith]]
-# [[Thomas Wilson]]
-# [[Maddison Thomson]]
-# [[Abigail Johnston]]
-# [[Mila Wong]]
-# [[James Williams]]
-# [[Ella White]]
-# [[Aria Chen]]
-# [[Ella Fraser]]
-# [[Oscar Chen]]
-# [[Sophia Martin]]
-# [[James Anderson]]
-# [[Maddison Lee]]
-# [[Eva Brown]]
-# [[Joseph Campbell]]
-# [[Leo Williams]]
-# [[Hazel Liu]]
-# [[Noah Yang]]
-# [[George Thompson]]
-# [[Isabella Lee]]
-# [[Samuel Williams]]
-# [[Jayden Zhou]]
-# [[Amelia Martin]]
-# [[Braxton Yang]]
-# [[Ryan Xu]]
-# [[Amelia Zhang]]
-# [[Beau Campbell]]
-# [[Carter Fraser]]
-# [[Ella Harris]]
-# [[Zoe Huang]]
-# [[Elijah Yang]]
-# [[Sophie Fraser]]
-# [[Elijah Anderson]]
-# [[Mason Brown]]
-# [[Lachlan Chen]]
-# [[Noah Collins]]
-# [[Ethan Wu]]
-# [[Olivia Kumar]]
-# [[Sophia Wu]]
-# [[Ella Taylor]]
-# [[Isaac Harris]]
-# [[Isabella Williams]]
-# [[Isabelle Young]]
-# [[Braxton Scott]]
-# [[Scarlett Xu]]
-# [[Luke Yang]]
-# [[Jayden Wu]]
-# [[Henry White]]
-# [[Mila Walker]]
-# [[George White]]
-# [[Grace Chen]]
-# [[Sophia Walker]]
-# [[Jacob Brown]]
-# [[Mason Walker]]
-# [[Charlie Fraser]]
-# [[Thomas Mitchell]]
-# [[Ruby Anderson]]
-# [[Emma Collins]]
-# [[Isaac Zhou]]
-# [[Samuel Mitchell]]
-# [[Blake Scott]]
-# [[Zoe Baker]]
-# [[Luca King]]
-# [[Lily White]]
-# [[Isabella Kumar]]
-# [[Lucas Li]]
-# [[Riley Campbell]]
-# [[Sophie Walker]]
-# [[Evelyn Kim]]
-# [[Liam Wu]]
-# [[Mason Zhang]]
-# [[Hannah Wong]]
-# [[Alexander Liu]]
-# [[Sophie Campbell]]
-# [[Ryan Yang]]
-# [[Isabelle Wang]]
-# [[Cooper Young]]
-# [[Sophia Fraser]]
-# [[Ella Thompson]]
-# [[Lachlan Taylor]]
-# [[Madison Anderson]]
-# [[Isla Johnston]]
-# [[Alexander Zhou]]
-# [[Zoe Jones]]
-# [[Charlotte Wilson]]
-# [[Olivia Smith]]</pre>
+# [[Add Person]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -7182,7 +7094,7 @@ exports.newtiddler = NewtiddlerWidget;
 <div created="20160314134440711" modified="20160322200440052" title="$:/SiteTitle">
 <pre>&lt;center&gt;TiddlyCRM playground&lt;/center&gt;</pre>
 </div>
-<div list="[[Main Menu]] [[Person with Image URL]] [[Alexander Liu]] $:/_Template/viewPerson" title="$:/StoryList">
+<div list="$:/Import [[Add Person]] Johnny [[Main Menu]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.11">
@@ -7340,6 +7252,32 @@ The latest batch of SampleData can be found in our [[SampleData playground|https
 </div>
 <div created="20160314135437410" modified="20160322215832126" tags="Organisations" title="Acme Widget Company">
 <pre></pre>
+</div>
+<div caption="Add Person..." created="20160403082028920" entity="Person" modified="20160405090836189" tags="Add SampleDataExtras [[Current Developments]]" title="Add Person">
+<pre>* ''First name:'' &lt;$edit-text tiddler=&quot;$:/_Temp/Person&quot; field=&quot;firstname&quot; placeholder=&quot;Type first name here...&quot; /&gt;
+* ''Surname:'' &lt;$edit-text tiddler=&quot;$:/_Temp/Person&quot; field=&quot;surname&quot; placeholder=&quot;Type surname here...&quot; /&gt;
+* ''Gender:'' &lt;$radio  tiddler=&quot;$:/_Temp/Person&quot; field=&quot;gender&quot; value=&quot;Male&quot;&gt;Male&lt;/$radio&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;$radio  tiddler=&quot;$:/_Temp/Person&quot; field=&quot;gender&quot; value=&quot;Female&quot;&gt;Female&lt;/$radio&gt;
+* ''Employee of:'' &lt;&lt;combobox tiddler:&quot;$:/_Temp/Person&quot; field:&quot;employer&quot; placeholder:&quot;Type or select employer...&quot; filter:&quot;[tag[Organisation]]&quot;&gt;&gt;
+
+
+&lt;$button&gt;Create Tiddler
+
+&lt;$action-setfield $tiddler={{$:/_Temp/Person!!firstname}} ] surname={{$:/_Temp/Person!!surname}} gender={{$:/_Temp/Person!!gender}}  tags={{$:/_Temp/Person!!tags}}/&gt;
+
+&lt;$action-navigate $to={{$:/_Temp/Person!!firstname}}/&gt;
+
+
+
+&lt;/$button&gt;
+
+
+
+&lt;$button&gt;Clear Form
+
+&lt;$action-setfield $tiddler='$:/_Temp/Person' name_temp='' firstname='' surname='' gender='' employer='' tags=''/&gt;
+
+&lt;/$button&gt;
+</pre>
 </div>
 <div firstname="Alexander" gender="Male" imageurl="http://dl.dropboxusercontent.com/s/ree2fxf5sejrne9/129536%3A1F985C1C.png" surname="Liu" tags="[[Auckland Real Estate Company, Limited]] Person SampleData" title="Alexander Liu">
 <pre></pre>
@@ -7779,6 +7717,9 @@ Generate New Contact
 <pre></pre>
 </div>
 <div firstname="Jayden" gender="Male" imageurl="http://dl.dropboxusercontent.com/s/f3x47mk7bnfv9r6/gombinoscope3.png" surname="Zhou" tags="[[West Coast Road Advocacy Society, Incorporated]] Person SampleData" title="Jayden Zhou">
+<pre></pre>
+</div>
+<div ]="true" created="20160405090845496" gender="Male" modified="20160405090851943" surname="Adams" tags="SampleDataExtras Menu" title="Johnny">
 <pre></pre>
 </div>
 <div firstname="Joseph" gender="Male" imageurl="http://dl.dropboxusercontent.com/s/q5cvrds6qecm7c5/gombinoscope2.png" surname="Campbell" tags="[[Broadway Fashion Company, Limited]] Person SampleData" title="Joseph Campbell">

@@ -720,10 +720,10 @@ Search all tiddlers including shadows (custom filter), with auto-popup listbox. 
 <div created="20160405082036248" employer="" firstname="Helen" gender="Male" modified="20160405111836457" name_temp="" surname="Clark" tags="" title="$:/_Temp/Person">
 <pre></pre>
 </div>
-<div created="20160404225927451" modified="20160405024803853" tags="$:/tags/ViewTemplate" title="$:/_Template/viewPerson">
+<div created="20160404225927451" modified="20160406133907927" tags="$:/tags/ViewTemplate" title="$:/_Template/viewPerson">
 <pre>&lt;$list filter=&quot;[is[current]tag[Person]]&quot;&gt;
 
-&lt;img style=&quot;float:right;&quot; src={{!!imageurl}} width=&quot;15%&quot; height=&quot;15%&quot;/&gt;
+&lt;img style=&quot;float:right;width:80px;height:auto;padding:1px;border:1px solid #021a40; background-color:#ff0;&quot; src={{!!imageurl}}/&gt;
 
 &lt;li&gt; ''First Name:'' {{!!firstname}}
 &lt;li&gt; ''Surname:'' {{!!surname}}
@@ -7102,7 +7102,7 @@ exports.newtiddler = NewtiddlerWidget;
 <div created="20160314134440711" modified="20160322200440052" title="$:/SiteTitle">
 <pre>&lt;center&gt;TiddlyCRM playground&lt;/center&gt;</pre>
 </div>
-<div list="[[Add Person]] [[Main Menu]] [[Reverse Engineering QuickTid]]" title="$:/StoryList">
+<div list="[[Jerome Kaino]] $:/_Template/viewPerson [[Main Menu]] [[Person with Image URL]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.11">
@@ -7261,7 +7261,7 @@ The latest batch of SampleData can be found in our [[SampleData playground|https
 <div created="20160314135437410" modified="20160322215832126" tags="Organisations" title="Acme Widget Company">
 <pre></pre>
 </div>
-<div caption="Add Person..." created="20160403082028920" entity="Person" modified="20160405105812500" tags="Add SampleDataExtras [[Current Developments]]" title="Add Person">
+<div caption="Add Person..." created="20160403082028920" entity="Person" modified="20160405213441046" tags="Add SampleDataExtras [[Current Developments]]" title="Add Person">
 <pre>\define newtitlemacro() $(firstname)$ $(surname)$
 \define newtagsmacro() Person NewData [[$(employer)$]]
 
@@ -7666,7 +7666,7 @@ Generate New Contact
 <div created="20160323000036817" modified="20160327092554060" tags="[[Closed Developments]]" title="Hegart's first commit">
 <pre>Just messing around with GitKraken and Andrew's new hybrid DB/GH method of hosting a TiddlyWiki. </pre>
 </div>
-<div created="20160405111838679" firstname="Helen" gender="Male" modified="20160405111838681" surname="Clark" tags="Person NewData" title="Helen Clark">
+<div created="20160405111838679" firstname="Helen" gender="Male" imageurl="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Helen_Clark_UNDP_2010.jpg/220px-Helen_Clark_UNDP_2010.jpg" modified="20160406132437456" surname="Clark" tags="Person NewData" title="Helen Clark">
 <pre></pre>
 </div>
 <div firstname="Henry" gender="Male" imageurl="http://dl.dropboxusercontent.com/s/infrahrw8oiy9qo/gombinoscope1.png" surname="White" tags="[[Henderson Used Car Company (1996), Limited]] Person SampleData" title="Henry White">
@@ -7732,10 +7732,10 @@ Generate New Contact
 <div firstname="Jayden" gender="Male" imageurl="http://dl.dropboxusercontent.com/s/f3x47mk7bnfv9r6/gombinoscope3.png" surname="Zhou" tags="[[West Coast Road Advocacy Society, Incorporated]] Person SampleData" title="Jayden Zhou">
 <pre></pre>
 </div>
-<div created="20160405111116980" firstname="Jerome" gender="Male" modified="20160405111116982" surname="Kaino" tags="Person NewData [[All Blacks]]" title="Jerome Kaino">
+<div created="20160406131841477" firstname="Jerome" gender="Male" imageurl="http://www.odt.co.nz/files/story/2012/03/jerome_kaino_4f5d184b3f.JPG" modified="20160406131852794" surname="Kaino" tags="Person NewData [[All Blacks]]" title="Jerome Kaino">
 <pre></pre>
 </div>
-<div created="20160405103621734" firstname="John" gender="Male" modified="20160405105450713" surname="Doe" tags="Person NewData [[White As Doe]]" title="John Doe">
+<div created="20160405103621734" firstname="John" gender="Male" imageurl="https://s-media-cache-ak0.pinimg.com/236x/81/3f/6f/813f6f841fecbe9c1aa14beea0d3f6a1.jpg" modified="20160406132840310" surname="Doe" tags="Person NewData [[White As Doe]]" title="John Doe">
 <pre></pre>
 </div>
 <div firstname="Joseph" gender="Male" imageurl="http://dl.dropboxusercontent.com/s/q5cvrds6qecm7c5/gombinoscope2.png" surname="Campbell" tags="[[Broadway Fashion Company, Limited]] Person SampleData" title="Joseph Campbell">
@@ -7913,15 +7913,15 @@ Organisation:&lt;br&gt;
 <div firstname="Oscar" gender="Male" imageurl="http://dl.dropboxusercontent.com/s/vm67759py1qr17s/129532%3A20377346.png" surname="Chen" tags="Person SampleData" title="Oscar Chen">
 <pre></pre>
 </div>
-<div created="20160404231240238" modified="20160405023547870" tags="[[Current Developments]]" title="Person with Image URL">
+<div created="20160404231240238" modified="20160406131513282" tags="[[Current Developments]]" title="Person with Image URL">
 <pre>In this experiment, we've added an image URL as a field for each random Person. These images are stored in our Dropbox, and have been generated from random face generators such as [[Morphases.com|http://www.morphases.com/editor/]], [[MonoFace|http://mono-1.com/monoface/main.html]], and [[Gombinoscope|http://gombinoscope.free.fr]].
 
 !! Males
-&lt;$list filter=&quot;[tag[Person]field:gender[Male]]&quot;&gt;&lt;$link&gt;&lt;img title={{!!title}} src={{!!imageurl}} width=&quot;10%&quot; height=&quot;10%&quot;/&gt;&lt;/$link&gt;&lt;/$list&gt;
+&lt;$list filter=&quot;[tag[Person]field:gender[Male]]&quot;&gt;&lt;$link&gt;&lt;img style=&quot;width:auto;height:50px;&quot; title={{!!title}} src={{!!imageurl}} /&gt;&lt;/$link&gt;&lt;/$list&gt;
 
 
 !! Females
-&lt;$list filter=&quot;[tag[Person]field:gender[Female]]&quot;&gt;&lt;$link&gt;&lt;img title={{!!title}} src={{!!imageurl}} width=&quot;10%&quot; height=&quot;10%&quot;/&gt;&lt;/$link&gt;&lt;/$list&gt;
+&lt;$list filter=&quot;[tag[Person]field:gender[Female]]&quot;&gt;&lt;$link&gt;&lt;img style=&quot;width:auto;height:50px;&quot; title={{!!title}} src={{!!imageurl}} /&gt;&lt;/$link&gt;&lt;/$list&gt;
 </pre>
 </div>
 <div created="20160324042630478" modified="20160324042630478" title="ProdDefault">
@@ -8000,7 +8000,7 @@ Fairly straightforward, this is the macro definition, with four parameters. He u
 <div firstname="Riley" gender="Male" imageurl="http://dl.dropboxusercontent.com/s/mw949ql1z5m497g/129534%3A45AD3DE3.png" surname="Campbell" tags="Person SampleData" title="Riley Campbell">
 <pre></pre>
 </div>
-<div created="20160405105633778" firstname="Ritchie" gender="Male" modified="20160405105816865" surname="McCaw" tags="Person NewData [[All Blacks]]" title="Ritchie McCaw">
+<div created="20160405105633778" firstname="Ritchie" gender="Male" imageurl="http://www.sbs.com.au/news/sites/sbs.com.au.news/files/images/1/9/19Nov_RichieMcCaw_800x600.jpg" modified="20160406132016237" surname="McCaw" tags="Person NewData [[All Blacks]]" title="Ritchie McCaw">
 <pre></pre>
 </div>
 <div firstname="Ruby" gender="Female" imageurl="http://dl.dropboxusercontent.com/s/6j0oggt1h3wy0vt/monoface4.png" surname="Anderson" tags="Person SampleData" title="Ruby Anderson">
@@ -8072,7 +8072,7 @@ Tag to add: &lt;$select tiddler='$Organisation List' field='tag_temp'&gt;
 
 </pre>
 </div>
-<div created="20160405110009019" firstname="Storm" gender="Female" modified="20160405110009022" surname="Purvis" tags="Person NewData [[Silver Ferns]]" title="Storm Purvis">
+<div created="20160405110009019" firstname="Storm" gender="Female" imageurl="http://www.odt.co.nz/files/story/2013/08/storm_purvis__520a058424.JPG" modified="20160406132313277" surname="Purvis" tags="Person NewData [[Silver Ferns]]" title="Storm Purvis">
 <pre></pre>
 </div>
 <div created="20160323234153270" modified="20160324042546003" title="TargetTiddler">

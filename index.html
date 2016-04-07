@@ -303,6 +303,8 @@ Error message and password prompt
 
 <li>Amelia Martin</li>
 
+<li>Arthur C Clark</li>
+
 <li>Ava Chen</li>
 
 <li>Ava Wilson</li>
@@ -544,6 +546,8 @@ Error message and password prompt
 <li>Person with Image URL</li>
 
 <li>Playing with Eric's combobox and the &quot;okaction&quot; param</li>
+
+<li>Playing with pass-through transclusion</li>
 
 <li>ProdDefault</li>
 
@@ -1027,7 +1031,7 @@ Search all tiddlers including shadows (custom filter), with auto-popup listbox. 
 <div city="Garply" created="20160403095302464" modified="20160403231424684" title="$:/_Temp/foobar">
 <pre></pre>
 </div>
-<div created="20160405082036248" employer="" firstname="Helen" gender="Male" modified="20160405111836457" name_temp="" surname="Clark" tags="" title="$:/_Temp/Person">
+<div created="20160405082036248" employer="" firstname="" gender="" modified="20160407125829624" name_temp="" surname="" tags="" title="$:/_Temp/Person">
 <pre></pre>
 </div>
 <div created="20160404225927451" modified="20160406170829376" tags="$:/tags/ViewTemplate" title="$:/_Template/viewPerson">
@@ -7415,7 +7419,7 @@ exports.newtiddler = NewtiddlerWidget;
 <div created="20160314134440711" modified="20160322200440052" title="$:/SiteTitle">
 <pre>&lt;center&gt;TiddlyCRM playground&lt;/center&gt;</pre>
 </div>
-<div list="[[Main Menu]] [[Playing with Eric's combobox and the &quot;okaction&quot; param]] [[Willow Walker]] $:/_Macros/combobox/info" title="$:/StoryList">
+<div list="[[Playing with pass-through transclusion]] [[Helen Clark]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.11">
@@ -7606,6 +7610,9 @@ The latest batch of SampleData can be found in our [[SampleData playground|https
 </pre>
 </div>
 <div firstname="Amelia" gender="Female" icon="$:/_Icon/person" imageurl="http://dl.dropboxusercontent.com/s/ip1dwafdcu28gjd/monoface2.png" surname="Martin" tags="Person SampleData" title="Amelia Martin">
+<pre></pre>
+</div>
+<div created="20160407125209544" firstname="Arthur C" gender="Male" modified="20160407125209545" surname="Clark" tags="Person NewData" title="Arthur C Clark">
 <pre></pre>
 </div>
 <div firstname="Ava" gender="Female" icon="$:/_Icon/person" imageurl="http://dl.dropboxusercontent.com/s/rl6ffhqq228cvip/129569%3A53DD04AD.png" surname="Chen" tags="[[Beau Management Company (2000), Limited]] Person SampleData" title="Ava Chen">
@@ -7997,7 +8004,7 @@ Generate New Contact
 <div created="20160323000036817" modified="20160327092554060" tags="[[Closed Developments]]" title="Hegart's first commit">
 <pre>Just messing around with GitKraken and Andrew's new hybrid DB/GH method of hosting a TiddlyWiki. </pre>
 </div>
-<div created="20160405111838679" firstname="Helen" gender="Male" icon="$:/_Icon/person" imageurl="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Helen_Clark_UNDP_2010.jpg/220px-Helen_Clark_UNDP_2010.jpg" modified="20160407073115691" surname="Clark" tags="Person NewData" title="Helen Clark">
+<div created="20160405111838679" firstname="Helen" gender="Female" icon="$:/_Icon/person" imageurl="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Helen_Clark_UNDP_2010.jpg/220px-Helen_Clark_UNDP_2010.jpg" modified="20160407125137965" surname="Clark" tags="Person NewData" title="Helen Clark">
 <pre>This is a text.</pre>
 </div>
 <div firstname="Henry" gender="Male" icon="$:/_Icon/person" imageurl="http://dl.dropboxusercontent.com/s/kh9u3l8t9rdghoy/129570%3AD9540B42.png" surname="Anderson" tags="[[Forrest Hill Advocacy Society, Incorporated]] Person SampleData" title="Henry Anderson">
@@ -8264,6 +8271,11 @@ Organisation:&lt;br&gt;
   match:yes focusPopup:yes editsize:40 listsize:5
   oktip:&quot;View this tiddler&quot;
   okaction:&quot;&quot;&quot;&lt;$action-navigate $to={{$:/temp/combobox/goto!!text}}/&gt;&quot;&quot;&quot;&gt;&gt;</pre>
+</div>
+<div created="20160407124754603" modified="20160407125056169" tags="[[Current Developments]]" title="Playing with pass-through transclusion">
+<pre>``{{Helen Clark||Add Person}}``
+
+{{Helen Clark||Add Person}}</pre>
 </div>
 <div created="20160324042630478" modified="20160324042630478" title="ProdDefault">
 <pre>Product 1</pre>

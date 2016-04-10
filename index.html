@@ -247,6 +247,8 @@ Error message and password prompt
 
 <li>$:/_Macros/taggly</li>
 
+<li>$:/_Plugins/tobibeer/make</li>
+
 <li>$:/_Temp/Address</li>
 
 <li>$:/_Temp/foobar</li>
@@ -273,8 +275,6 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
-<li>$:/Import</li>
-
 <li>$:/isEncrypted</li>
 
 <li>$:/palette</li>
@@ -282,8 +282,6 @@ Error message and password prompt
 <li>$:/plugins/skeeve/newtiddler.js</li>
 
 <li>$:/plugins/tiddlywiki/codemirror</li>
-
-<li>$:/plugins/tobibeer/make</li>
 
 <li>$:/SiteSubtitle</li>
 
@@ -310,6 +308,8 @@ Error message and password prompt
 <li>Acme Widget Company</li>
 
 <li>Add Person</li>
+
+<li>Add Person with UUID</li>
 
 <li>Alexander Wu</li>
 
@@ -468,6 +468,8 @@ Error message and password prompt
 <li>Current Developments</li>
 
 <li>Custom Macros</li>
+
+<li>d2715bea-483a-442f-845b-deb7b885c3a3</li>
 
 <li>Daniel Builders Supply Company, Limited Physical Address</li>
 
@@ -1638,13 +1640,35 @@ Search all tiddlers including shadows (custom filter), with auto-popup listbox. 
 &lt;&lt;list-links filter:&quot;[tag{!!title}]&quot;&gt;&gt;
 \end</pre>
 </div>
+<div author="Tobias Beer" bag="default" core-version="&gt;=5.1.9" created="20160410160027906" dependents="" description="Use the make filter to generate unique or random tiddler titles" documentation="https://tobibeer.github.io/tw5-make" list="readme" modified="20160410160616525" origin="[[Tobias Beer|https://tobibeer.github.io/tw5-plugins/#make]]" plugin-type="plugin" purpose="Use the make filter to generate unique or random tiddler titles." requires="" revision="0" source="https://github.com/tobibeer/tw5-make" tags="SampleDataExtras $:/_Plugins" title="$:/_Plugins/tobibeer/make" type="application/json" version="0.6.0">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/plugins/tobibeer/make/filters.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/plugins/tobibeer/make/filters.js\r\ntype: application/javascript\r\nmodule-type: filteroperator\r\n\r\na filter to generate tiddler titles\r\n\r\n@preserve\r\n\\*/\n(function(){\&quot;use strict\&quot;;exports.make=function(e,t,i){var r,a,n,d,l,u,s,c,p=[],f=i.widget,m=i.wiki,o=[],x={inc:1,min:1,sep:\&quot; \&quot;,tiddler:f?f.getVariable(\&quot;currentTiddler\&quot;):\&quot;\&quot;},g=/\\%TITLE\\%/gim,h=/\\%COUNT\\%/gim,w=/\\%DATE\\%/gim,T=/\\%UUID\\%/gim,D=/\\%MAX\\%/gim,k=/RANDOM\\((\\d*)\\)/gim,$=/\\%TIDDLER\\%/gim,b=/^\\s*([\\$\\w\\d\\-\\_\\/]*):(.*)(?:\\s*)$/,q=function(e,t){t=t||16;var i=\&quot;\&quot;,r=function(){var e=Math.floor(Math.random()*62);return e&lt;10?e:e&lt;36?String.fromCharCode(e+55):String.fromCharCode(e+61)};while(t--){i+=r()}return i},N=function(e,t){return m.getTextReference(t,\&quot;\&quot;,x.tiddler)},v=function(e,t){return f?f.getVariable(t):\&quot;\&quot;},C=function(e){return e.replace(/{{([^}]*)}}/gm,N).replace(/&lt;&lt;([^&gt;]*)&gt;&gt;/gm,v)},E=function(e,t){var i,r=x.last||x.pad&amp;&amp;x.expr.indexOf(\&quot;%count%\&quot;)&lt;0?x.pad:0,a=m.getTiddler(x.tiddler),n=x.uniq===1?m.getTiddlerData(x.tiddler,{}):0,d=x.last&amp;&amp;x.lastTitle==t?x.last:r?0:-1;do{d++;i=t+(d&gt;0?x.sep+(r?$tw.utils.pad(d,r):d):\&quot;\&quot;)}while(e.indexOf(i)&gt;=0||x.uniq===undefined&amp;&amp;m.tiddlerExists(i)||x.uniq===0&amp;&amp;a.hasField(i)||x.uniq===1&amp;&amp;$tw.utils.hop(n,i));if(r){x.last=d;x.lastTitle=t}return i};e(function(e,t){p.push(t)});d=!(p.length===1&amp;&amp;!p[0]);try{$tw.utils.each((t.operand||\&quot;\&quot;).split(\&quot;\\\\\&quot;),function(e){var t;e=e.trim();if(e){l=b.exec(e);if(l){switch(l[1]){case\&quot;min\&quot;:case\&quot;max\&quot;:case\&quot;inc\&quot;:t=parseInt(C(l[2]));if(isNaN(t)||t&lt;1){t=1}x[l[1]]=t;break;case\&quot;sep\&quot;:x.sep=l[2];break;case\&quot;unique\&quot;:x.uniq=l[2]===\&quot;field\&quot;?0:1;break;case\&quot;pad\&quot;:x.pad=parseInt(l[2]);break;case\&quot;tiddler\&quot;:x.tiddler=l[2];break;case\&quot;date-format\&quot;:x.dateFormat=l[2].trim();break}}else if(x.expr===undefined){x.expr=e}}});if(x.uniq===0){x.sep=x.sep===\&quot; \&quot;?\&quot;\&quot;:x.sep.trim()}if(x.expr===undefined){x.expr=\&quot;%tiddler%\&quot;}if(x.pad!==undefined&amp;&amp;isNaN(x.pad)){x.pad=x.max?x.max.toString().length:2}if(d){x.max=x.max?Math.min(p.length,x.max):p.length}if(!x.max||x.max&lt;x.min){x.max=x.min}s=new Date;n=s;x.count=x.min;u=k.test(x.expr);if(w.test(x.expr)){r=x.dateFormat?$tw.utils.formatDateString(s,x.dateFormat):$tw.utils.stringifyDate(s)}c=T.test(x.expr);do{a=C(x.expr);if(u){a=a.replace(k,q)}if(c){a=a.replace(T,$tw.utils.uuid())}a=E(o,a.replace($,x.tiddler).replace(g,d?p[x.count-1]:x.tiddler).replace(D,x.max).replace(h,x.pad?$tw.utils.pad(x.count,x.pad):x.count).replace(w,r));o.push(a);x.count=x.count+x.inc;if(x.count%500===0){n=new Date}}while(x.count&lt;=x.max&amp;&amp;n-s&lt;5e3)}catch(I){return[\&quot;Error in make filter:\\n\&quot;+I]}return o}})();&quot;,
+            &quot;title&quot;: &quot;$:/plugins/tobibeer/make/filters.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;filteroperator&quot;
+        },
+        &quot;$:/plugins/tobibeer/make/readme&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/tobibeer/make/readme&quot;,
+            &quot;text&quot;: &quot;Provides the filter `[make[]]` to create unique, even random titles or text.\n\n; Placeholders\r\n: `%date%` — a datestamp of the current time (format: `YYYY0MM0DD0hh0mm0ss`)\r\n: `%count%` — current count (see options: ''min'', ''inc'', ''max'')\r\n: `%max%` — max number generated\r\n: `%tiddler%` — defined ''tiddler'' or current\r\n: `%title%` — input title\r\n: when not operating on input titles, the (current) tiddler title\n\n: `&lt;&lt;variable&gt;&gt;`\r\n: `{{text!!reference}}`\r\n: `random()` — a 16 letter random string, or short, e.g.: `random(8)`\r\n: `%uuid%` — a universally unique identifier\r\n; Options\r\n: `min:1` — starting number\r\n: `inc:1` — increment\r\n: `max:2` — max number\r\n: `sep:-` — separator before unique count\r\n: `date-format:&lt;dateFormatString&gt;` — for `%date%`\r\n: `tiddler:foo` — used for ''unique'' and text-references\r\n: `unique:field` — unique field-name instead of global titles\r\n: `unique:index` — unique data tiddler index\r\n: `pad:max` — zero-pad count to length of max\r\n: `pad:5` — zero-pad count to 5 digits: 00001\n\n; Documentation / examples / demos...\r\n: http://tobibeer.github.io/tw5-plugins#make&quot;
+        },
+        &quot;$:/plugins/tobibeer/make/utils.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/plugins/tobibeer/make/utils.js\r\ntype: application/javascript\r\nmodule-type: utils\r\n\r\nUtility function to create a uuid\r\n\r\n@preserve\r\n\\*/\n(function(){\&quot;use strict\&quot;;exports.uuid=function(){var r=[];for(var t=0;t&lt;256;t++){r[t]=(t&lt;16?\&quot;0\&quot;:\&quot;\&quot;)+t.toString(16)}function n(){var t=Math.random()*4294967295|0,n=Math.random()*4294967295|0,a=Math.random()*4294967295|0,o=Math.random()*4294967295|0;return r[t&amp;255]+r[t&gt;&gt;8&amp;255]+r[t&gt;&gt;16&amp;255]+r[t&gt;&gt;24&amp;255]+\&quot;-\&quot;+r[n&amp;255]+r[n&gt;&gt;8&amp;255]+\&quot;-\&quot;+r[n&gt;&gt;16&amp;15|64]+r[n&gt;&gt;24&amp;255]+\&quot;-\&quot;+r[a&amp;63|128]+r[a&gt;&gt;8&amp;255]+\&quot;-\&quot;+r[a&gt;&gt;16&amp;255]+r[a&gt;&gt;24&amp;255]+r[o&amp;255]+r[o&gt;&gt;8&amp;255]+r[o&gt;&gt;16&amp;255]+r[o&gt;&gt;24&amp;255]}return n()}})();&quot;,
+            &quot;title&quot;: &quot;$:/plugins/tobibeer/make/utils.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;utils&quot;
+        }
+    }
+}</pre>
+</div>
 <div city="" created="20160407141459993" index="" modified="20160407231641191" title="$:/_Temp/Address">
 <pre>* ''City:'' {{!!city}}</pre>
 </div>
 <div city="Garply" created="20160403095302464" modified="20160403231424684" title="$:/_Temp/foobar">
 <pre></pre>
 </div>
-<div created="20160405082036248" employer="" firstname="" gender="" modified="20160407125829624" name_temp="" surname="" tags="" title="$:/_Temp/Person">
+<div created="20160405082036248" employer="" firstname="Jim" gender="Male" modified="20160410160854303" name_temp="" surname="Brown" tags="" title="$:/_Temp/Person">
 <pre></pre>
 </div>
 <div created="20160404225927451" modified="20160406170829376" tags="$:/tags/ViewTemplate" title="$:/_Template/viewPerson">
@@ -7739,72 +7763,6 @@ Search all tiddlers including shadows (custom filter), with auto-popup listbox. 
 <pre>[[Main Menu]]
 </pre>
 </div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[$:/_Icon/actionpoint]]
-# [[$:/_Icon/actionpoint-add]]
-# [[$:/_Icon/actionpoint-delete]]
-# [[$:/_Icon/actionpoint-go]]
-# [[$:/_Icon/address]]
-# [[$:/_Icon/address-add]]
-# [[$:/_Icon/address-delete]]
-# [[$:/_Icon/address-edit]]
-# [[$:/_Icon/address-go]]
-# [[$:/_Icon/code-macro]]
-# [[$:/_Icon/code-template]]
-# [[$:/_Icon/communication]]
-# [[$:/_Icon/communication-add]]
-# [[$:/_Icon/communication-delete]]
-# [[$:/_Icon/communication-edit]]
-# [[$:/_Icon/landline]]
-# [[$:/_Icon/mobile]]
-# [[$:/_Icon/organisation]]
-# [[$:/_Icon/organisation-add]]
-# [[$:/_Icon/organisation-delete]]
-# [[$:/_Icon/organisation-edit]]
-# [[$:/_Icon/organisation-go]]
-# [[$:/_Icon/person]]
-# [[$:/_Icon/person-add]]
-# [[$:/_Icon/person-delete]]
-# [[$:/_Icon/person-edit]]
-# [[$:/_Icon/person-go]]
-# [[$:/_Icon/actionpoint-edit]]
-# [[$:/_Icon/code-elements]]
-# [[$:/_Icon/code-plugin]]
-# [[$:/_Icon/code-script]]
-# [[$:/_Icon/communication-go]]
-# [[$:/_Icon/document]]
-# [[$:/_Icon/document-add]]
-# [[$:/_Icon/document-delete]]
-# [[$:/_Icon/document-edit]]
-# [[$:/_Icon/document-go]]
-# [[$:/_Icon/email]]
-# [[$:/_Icon/email-add]]
-# [[$:/_Icon/email-delete]]
-# [[$:/_Icon/email-edit]]
-# [[$:/_Icon/email-go]]
-# [[$:/_Icon/issue]]
-# [[$:/_Icon/issue-add]]
-# [[$:/_Icon/issue-delete]]
-# [[$:/_Icon/issue-edit]]
-# [[$:/_Icon/issue-go]]
-# [[$:/_Icon/landline-add]]
-# [[$:/_Icon/landline-delete]]
-# [[$:/_Icon/landline-edit]]
-# [[$:/_Icon/landline-go]]
-# [[$:/_Icon/mobile-add]]
-# [[$:/_Icon/mobile-delete]]
-# [[$:/_Icon/mobile-edit]]
-# [[$:/_Icon/mobile-go]]
-# [[$:/_Icon/product-service]]
-# [[$:/_Icon/product-service-add]]
-# [[$:/_Icon/product-service-delete]]
-# [[$:/_Icon/product-service-go]]
-# [[$:/_Icon/product-service-edit]]
-# [[$:/_Icons/code-experimental-off]]
-# [[$:/_Icons/code-experimental-on]]</pre>
-</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -8065,35 +8023,13 @@ exports.newtiddler = NewtiddlerWidget;
     }
 }</pre>
 </div>
-<div author="Tobias Beer" bag="default" core-version="&gt;=5.1.9" dependents="" description="Use the make filter to generate unique or random tiddler titles" documentation="https://tobibeer.github.io/tw5-make" list="readme" plugin-type="plugin" requires="" revision="0" source="https://github.com/tobibeer/tw5-make" title="$:/plugins/tobibeer/make" type="application/json" version="0.6.0">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;$:/plugins/tobibeer/make/filters.js&quot;: {
-            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/plugins/tobibeer/make/filters.js\r\ntype: application/javascript\r\nmodule-type: filteroperator\r\n\r\na filter to generate tiddler titles\r\n\r\n@preserve\r\n\\*/\n(function(){\&quot;use strict\&quot;;exports.make=function(e,t,i){var r,a,n,d,l,u,s,c,p=[],f=i.widget,m=i.wiki,o=[],x={inc:1,min:1,sep:\&quot; \&quot;,tiddler:f?f.getVariable(\&quot;currentTiddler\&quot;):\&quot;\&quot;},g=/\\%TITLE\\%/gim,h=/\\%COUNT\\%/gim,w=/\\%DATE\\%/gim,T=/\\%UUID\\%/gim,D=/\\%MAX\\%/gim,k=/RANDOM\\((\\d*)\\)/gim,$=/\\%TIDDLER\\%/gim,b=/^\\s*([\\$\\w\\d\\-\\_\\/]*):(.*)(?:\\s*)$/,q=function(e,t){t=t||16;var i=\&quot;\&quot;,r=function(){var e=Math.floor(Math.random()*62);return e&lt;10?e:e&lt;36?String.fromCharCode(e+55):String.fromCharCode(e+61)};while(t--){i+=r()}return i},N=function(e,t){return m.getTextReference(t,\&quot;\&quot;,x.tiddler)},v=function(e,t){return f?f.getVariable(t):\&quot;\&quot;},C=function(e){return e.replace(/{{([^}]*)}}/gm,N).replace(/&lt;&lt;([^&gt;]*)&gt;&gt;/gm,v)},E=function(e,t){var i,r=x.last||x.pad&amp;&amp;x.expr.indexOf(\&quot;%count%\&quot;)&lt;0?x.pad:0,a=m.getTiddler(x.tiddler),n=x.uniq===1?m.getTiddlerData(x.tiddler,{}):0,d=x.last&amp;&amp;x.lastTitle==t?x.last:r?0:-1;do{d++;i=t+(d&gt;0?x.sep+(r?$tw.utils.pad(d,r):d):\&quot;\&quot;)}while(e.indexOf(i)&gt;=0||x.uniq===undefined&amp;&amp;m.tiddlerExists(i)||x.uniq===0&amp;&amp;a.hasField(i)||x.uniq===1&amp;&amp;$tw.utils.hop(n,i));if(r){x.last=d;x.lastTitle=t}return i};e(function(e,t){p.push(t)});d=!(p.length===1&amp;&amp;!p[0]);try{$tw.utils.each((t.operand||\&quot;\&quot;).split(\&quot;\\\\\&quot;),function(e){var t;e=e.trim();if(e){l=b.exec(e);if(l){switch(l[1]){case\&quot;min\&quot;:case\&quot;max\&quot;:case\&quot;inc\&quot;:t=parseInt(C(l[2]));if(isNaN(t)||t&lt;1){t=1}x[l[1]]=t;break;case\&quot;sep\&quot;:x.sep=l[2];break;case\&quot;unique\&quot;:x.uniq=l[2]===\&quot;field\&quot;?0:1;break;case\&quot;pad\&quot;:x.pad=parseInt(l[2]);break;case\&quot;tiddler\&quot;:x.tiddler=l[2];break;case\&quot;date-format\&quot;:x.dateFormat=l[2].trim();break}}else if(x.expr===undefined){x.expr=e}}});if(x.uniq===0){x.sep=x.sep===\&quot; \&quot;?\&quot;\&quot;:x.sep.trim()}if(x.expr===undefined){x.expr=\&quot;%tiddler%\&quot;}if(x.pad!==undefined&amp;&amp;isNaN(x.pad)){x.pad=x.max?x.max.toString().length:2}if(d){x.max=x.max?Math.min(p.length,x.max):p.length}if(!x.max||x.max&lt;x.min){x.max=x.min}s=new Date;n=s;x.count=x.min;u=k.test(x.expr);if(w.test(x.expr)){r=x.dateFormat?$tw.utils.formatDateString(s,x.dateFormat):$tw.utils.stringifyDate(s)}c=T.test(x.expr);do{a=C(x.expr);if(u){a=a.replace(k,q)}if(c){a=a.replace(T,$tw.utils.uuid())}a=E(o,a.replace($,x.tiddler).replace(g,d?p[x.count-1]:x.tiddler).replace(D,x.max).replace(h,x.pad?$tw.utils.pad(x.count,x.pad):x.count).replace(w,r));o.push(a);x.count=x.count+x.inc;if(x.count%500===0){n=new Date}}while(x.count&lt;=x.max&amp;&amp;n-s&lt;5e3)}catch(I){return[\&quot;Error in make filter:\\n\&quot;+I]}return o}})();&quot;,
-            &quot;title&quot;: &quot;$:/plugins/tobibeer/make/filters.js&quot;,
-            &quot;type&quot;: &quot;application/javascript&quot;,
-            &quot;module-type&quot;: &quot;filteroperator&quot;
-        },
-        &quot;$:/plugins/tobibeer/make/readme&quot;: {
-            &quot;title&quot;: &quot;$:/plugins/tobibeer/make/readme&quot;,
-            &quot;text&quot;: &quot;Provides the filter `[make[]]` to create unique, even random titles or text.\n\n; Placeholders\r\n: `%date%` — a datestamp of the current time (format: `YYYY0MM0DD0hh0mm0ss`)\r\n: `%count%` — current count (see options: ''min'', ''inc'', ''max'')\r\n: `%max%` — max number generated\r\n: `%tiddler%` — defined ''tiddler'' or current\r\n: `%title%` — input title\r\n: when not operating on input titles, the (current) tiddler title\n\n: `&lt;&lt;variable&gt;&gt;`\r\n: `{{text!!reference}}`\r\n: `random()` — a 16 letter random string, or short, e.g.: `random(8)`\r\n: `%uuid%` — a universally unique identifier\r\n; Options\r\n: `min:1` — starting number\r\n: `inc:1` — increment\r\n: `max:2` — max number\r\n: `sep:-` — separator before unique count\r\n: `date-format:&lt;dateFormatString&gt;` — for `%date%`\r\n: `tiddler:foo` — used for ''unique'' and text-references\r\n: `unique:field` — unique field-name instead of global titles\r\n: `unique:index` — unique data tiddler index\r\n: `pad:max` — zero-pad count to length of max\r\n: `pad:5` — zero-pad count to 5 digits: 00001\n\n; Documentation / examples / demos...\r\n: http://tobibeer.github.io/tw5-plugins#make&quot;
-        },
-        &quot;$:/plugins/tobibeer/make/utils.js&quot;: {
-            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/plugins/tobibeer/make/utils.js\r\ntype: application/javascript\r\nmodule-type: utils\r\n\r\nUtility function to create a uuid\r\n\r\n@preserve\r\n\\*/\n(function(){\&quot;use strict\&quot;;exports.uuid=function(){var r=[];for(var t=0;t&lt;256;t++){r[t]=(t&lt;16?\&quot;0\&quot;:\&quot;\&quot;)+t.toString(16)}function n(){var t=Math.random()*4294967295|0,n=Math.random()*4294967295|0,a=Math.random()*4294967295|0,o=Math.random()*4294967295|0;return r[t&amp;255]+r[t&gt;&gt;8&amp;255]+r[t&gt;&gt;16&amp;255]+r[t&gt;&gt;24&amp;255]+\&quot;-\&quot;+r[n&amp;255]+r[n&gt;&gt;8&amp;255]+\&quot;-\&quot;+r[n&gt;&gt;16&amp;15|64]+r[n&gt;&gt;24&amp;255]+\&quot;-\&quot;+r[a&amp;63|128]+r[a&gt;&gt;8&amp;255]+\&quot;-\&quot;+r[a&gt;&gt;16&amp;255]+r[a&gt;&gt;24&amp;255]+r[o&amp;255]+r[o&gt;&gt;8&amp;255]+r[o&gt;&gt;16&amp;255]+r[o&gt;&gt;24&amp;255]}return n()}})();&quot;,
-            &quot;title&quot;: &quot;$:/plugins/tobibeer/make/utils.js&quot;,
-            &quot;type&quot;: &quot;application/javascript&quot;,
-            &quot;module-type&quot;: &quot;utils&quot;
-        }
-    }
-}</pre>
-</div>
 <div created="20160314134534030" modified="20160314134811111" title="$:/SiteSubtitle">
 <pre>&lt;center&gt;A playground for the [ext[TiddlyCRM|https://trello.com/b/IiYqc4IG/tiddlycrm]] project.&lt;/center&gt;</pre>
 </div>
 <div created="20160314134440711" modified="20160322200440052" title="$:/SiteTitle">
 <pre>&lt;center&gt;TiddlyCRM playground&lt;/center&gt;</pre>
 </div>
-<div list="[[Main Menu]] [[Person with Image URL]]" title="$:/StoryList">
+<div list="[[Main Menu]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.11">
@@ -8288,6 +8224,36 @@ The latest batch of SampleData can be found in our [[SampleData playground|https
 
 &lt;/$button&gt;
 </pre>
+</div>
+<div created="20160410155816258" entity="Person" icon="$:/_Icon/person-add" modified="20160410163844142" tags="Add SampleDataExtras [[Current Developments]]" title="Add Person with UUID">
+<pre>\define newcaptionmacro() $(firstname)$ $(surname)$
+\define newtagsmacro() Person NewData [[$(employer)$]]
+&lt;$set name=&quot;temptitle&quot; filter=&quot;[[]make[%uuid%]]&quot; &gt;
+
+* ''Tiddler title:'' &lt;&lt;temptitle&gt;&gt;
+* ''First name:'' &lt;$edit-text tiddler=&quot;$:/_Temp/Person&quot; field=&quot;firstname&quot; placeholder=&quot;Type first name here...&quot; /&gt;
+* ''Surname:'' &lt;$edit-text tiddler=&quot;$:/_Temp/Person&quot; field=&quot;surname&quot; placeholder=&quot;Type surname here...&quot; /&gt;
+* ''Gender:'' &lt;$radio  tiddler=&quot;$:/_Temp/Person&quot; field=&quot;gender&quot; value=&quot;Male&quot;&gt;Male&lt;/$radio&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;$radio  tiddler=&quot;$:/_Temp/Person&quot; field=&quot;gender&quot; value=&quot;Female&quot;&gt;Female&lt;/$radio&gt;
+* ''Employee of:'' &lt;&lt;combobox tiddler:&quot;$:/_Temp/Person&quot; field:&quot;employer&quot; placeholder:&quot;Type or select employer...&quot; filter:&quot;[tag[Organisation]]&quot;&gt;&gt;
+
+
+&lt;$button&gt;Create Person
+&lt;$vars firstname={{$:/_Temp/Person!!firstname}}
+       surname={{$:/_Temp/Person!!surname}}
+       employer={{$:/_Temp/Person!!employer}} &gt;
+&lt;$action-setfield $tiddler=&lt;&lt;temptitle&gt;&gt; firstname={{$:/_Temp/Person!!firstname}} surname={{$:/_Temp/Person!!surname}} gender={{$:/_Temp/Person!!gender}} tags=&lt;&lt;newtagsmacro&gt;&gt; caption=&quot;&quot;&quot;{{!!firstname}} {{!!surname}}&quot;&quot;&quot; /&gt;
+&lt;$action-navigate $to=&lt;&lt;temptitle&gt;&gt; /&gt;
+&lt;/$vars&gt;
+&lt;/$button&gt;
+
+
+
+&lt;$button&gt;Clear Form
+
+&lt;$action-setfield $tiddler='$:/_Temp/Person' name_temp='' firstname='' surname='' gender='' employer='' tags=''/&gt;
+
+&lt;/$button&gt;
+&lt;/$set&gt;</pre>
 </div>
 <div firstname="Alexander" gender="Male" icon="$:/_Icon/person" imageurl="http://dl.dropboxusercontent.com/s/mw949ql1z5m497g/129534%3A45AD3DE3.png" surname="Wu" tags="Person SampleData" title="Alexander Wu">
 <pre></pre>
@@ -8596,6 +8562,9 @@ Press this button and the tiddler will be created and opened so you can view it.
 &lt;&lt;list-links filter:&quot;[tag{!!title}]&quot;&gt;&gt;</pre>
 </div>
 <div color="#0f0ffc" created="20160314135336574" modified="20160322222026356" tags="[[Current Developments]]" title="Custom Macros">
+<pre></pre>
+</div>
+<div caption="{{!!firstname}} {{!!surname}}" created="20160410163849415" firstname="Jim" gender="Male" modified="20160410165044783" surname="Brown" tags="Person NewData" title="d2715bea-483a-442f-845b-deb7b885c3a3">
 <pre></pre>
 </div>
 <div box="" city="Auckland" icon="$:/_Icon/address" owner="Daniel Builders Supply Company, Limited" postcode="1050" purpose="Physical" street="Remuera Road" streetnumber="349" suburb="Newmarket" tags="[[Daniel Builders Supply Company, Limited]] Address SampleData" title="Daniel Builders Supply Company, Limited Physical Address">

@@ -293,6 +293,8 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla</li>
 
+<li>$tiddler$</li>
+
 <li>160323: Information Flow</li>
 
 <li>160403: Project Update - Hegart</li>
@@ -1662,8 +1664,10 @@ Search all tiddlers including shadows (custom filter), with auto-popup listbox. 
     }
 }</pre>
 </div>
-<div city="" created="20160407141459993" index="" modified="20160407231641191" title="$:/_Temp/Address">
-<pre>* ''City:'' {{!!city}}</pre>
+<div city="" created="20160407141459993" index="" modified="20160410171922239" title="$:/_Temp/Address" type="application/json">
+<pre>{
+    &quot;&lt;&lt;myaction&quot;: &quot;Aria Liu Home Address&quot;
+}</pre>
 </div>
 <div city="Garply" created="20160403095302464" modified="20160403231424684" title="$:/_Temp/foobar">
 <pre></pre>
@@ -8029,7 +8033,7 @@ exports.newtiddler = NewtiddlerWidget;
 <div created="20160314134440711" modified="20160322200440052" title="$:/SiteTitle">
 <pre>&lt;center&gt;TiddlyCRM playground&lt;/center&gt;</pre>
 </div>
-<div list="[[Main Menu]]" title="$:/StoryList">
+<div list="[[Main Menu]] [[Playing with Eric's combobox and the &quot;okaction&quot; param]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.11">
@@ -8135,6 +8139,11 @@ exports.newtiddler = NewtiddlerWidget;
             &quot;text&quot;: &quot;&lt;$reveal state=\&quot;$:/themes/tiddlywiki/vanilla/options/stickytitles\&quot; type=\&quot;match\&quot; text=\&quot;yes\&quot;&gt;\n``\n.tc-tiddler-title {\n\tposition: -webkit-sticky;\n\tposition: -moz-sticky;\n\tposition: -o-sticky;\n\tposition: -ms-sticky;\n\tposition: sticky;\n\ttop: 0px;\n\tbackground: ``&lt;&lt;colour tiddler-background&gt;&gt;``;\n\tz-index: 500;\n}\n``\n&lt;/$reveal&gt;\n&quot;
         }
     }
+}</pre>
+</div>
+<div created="20160410170737810" modified="20160410171743884" title="$tiddler$" type="application/json">
+<pre>{
+    &quot;$index$&quot;: &quot;Wellington&quot;
 }</pre>
 </div>
 <div created="20160323223828638" modified="20160327092850381" title="160323: Information Flow" type="image/png">
@@ -9620,9 +9629,9 @@ Organisation:&lt;br&gt;
 &lt;$list filter=&quot;[tag[Person]field:gender[Female]]&quot;&gt;&lt;$link&gt;&lt;img style=&quot;width:auto;height:50px;&quot; title={{!!title}} src={{!!imageurl}} /&gt;&lt;/$link&gt;&lt;/$list&gt;
 </pre>
 </div>
-<div created="20160407062004993" modified="20160407232432674" tags="[[Current Developments]]" title="Playing with Eric's combobox and the &quot;okaction&quot; param">
+<div created="20160407062004993" modified="20160410172016549" tags="[[Current Developments]]" title="Playing with Eric's combobox and the &quot;okaction&quot; param">
 <pre>\define myaction() 
-&lt;$action-setfield $tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; $field=&quot;&quot;&quot;$field$&quot;&quot;&quot; $index=&quot;&quot;&quot;$index$&quot;&quot;&quot; $value={{!!city}}/&gt;
+&lt;$action-setfield $tiddler=&quot;&quot;&quot;$tiddler$&quot;&quot;&quot; $field=&quot;&quot;&quot;$field$&quot;&quot;&quot; $index=&quot;&quot;&quot;$index$&quot;&quot;&quot; $value={{!!city}} /&gt;
 \end
 
 The ``&lt;&lt;combobox&gt;&gt;`` documentation is [[here|$:/_Macros/combobox/info]].
@@ -9657,6 +9666,7 @@ There will eventually be two comboboxes here. The output of the first, using the
 
 For now I'm just trying to work out why the ``title`` is being stored in [[$:/_Temp/Address]] instead of the ``city`` value.
 
+!!! Attempt 1
 ''Select a city:'' &lt;&lt;combobox tiddler:&quot;$:/_Temp/Address&quot; 
   field:&quot;city&quot;
   filter:&quot;[tag[Address]each:field[city]]&quot;
@@ -9666,15 +9676,29 @@ For now I'm just trying to work out why the ``title`` is being stored in [[$:/_T
   clickaction:&quot;&quot;&quot;&lt;&lt;myaction&gt;&gt;&quot;&quot;&quot;
 &gt;&gt;
 
+This one uses the ``&lt;&lt;combobox&gt;&gt;`` macro, but it's still not working,
+
+!!! Attempt 2
+''Select a city:'' &lt;$macrocall $name=&quot;combobox&quot; tiddler=&quot;$:/_Temp/Address&quot; 
+  field=&quot;city&quot;
+  filter=&quot;[tag[Address]each:field[city]]&quot;
+  template=&quot;{{!!city}}&quot;
+  match=&quot;yes&quot; focusPopup=&quot;yes&quot; editsize=&quot;40&quot; listsize=&quot;5&quot;
+  oktip=&quot;Constrain suburbs to this city.&quot;
+  clickaction=&quot;&quot;&quot;&lt;&lt;myaction&gt;&gt;&quot;&quot;&quot;
+/&gt;
+
+This one uses a ``&lt;$macrocall&gt;`` widget, but it's still not working,
+
 ```
-&lt;&lt;combobox tiddler:&quot;$:/_Temp/Address&quot; 
-  field:&quot;city&quot;
-  filter:&quot;[tag[Address]each:field[city]]&quot;
-  template:&quot;{{!!city}}&quot;
-  match:yes focusPopup:yes editsize:40 listsize:5
-  oktip:&quot;Constrain suburbs to this city.&quot;
-  clickaction:&quot;&quot;&quot;&lt;&lt;myaction&gt;&gt;&quot;&quot;&quot;
-&gt;&gt;
+&lt;$macrocall $name=&quot;combobox&quot; tiddler=&quot;$:/_Temp/Address&quot; 
+  field=&quot;city&quot;
+  filter=&quot;[tag[Address]each:field[city]]&quot;
+  template=&quot;{{!!city}}&quot;
+  match=yes focusPopup=yes editsize=&quot;40&quot; listsize=&quot;5&quot;
+  oktip=&quot;Constrain suburbs to this city.&quot;
+  clickaction=&quot;&quot;&quot;&lt;&lt;myaction&gt;&gt;&quot;&quot;&quot;
+/&gt;
 ```
 
 {{$:/core/images/close-button}} This one doesn't work yet.</pre>

@@ -275,6 +275,8 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/palette</li>
@@ -298,6 +300,8 @@ Error message and password prompt
 <li>160323: Information Flow</li>
 
 <li>160403: Project Update - Hegart</li>
+
+<li>160411: Project Update - Hegart</li>
 
 <li>Abigail Patel</li>
 
@@ -7767,6 +7771,11 @@ Search all tiddlers including shadows (custom filter), with auto-popup listbox. 
 <pre>[[Main Menu]]
 </pre>
 </div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[160411: Project Update - Hegart]]</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -8033,7 +8042,7 @@ exports.newtiddler = NewtiddlerWidget;
 <div created="20160314134440711" modified="20160322200440052" title="$:/SiteTitle">
 <pre>&lt;center&gt;TiddlyCRM playground&lt;/center&gt;</pre>
 </div>
-<div list="[[Main Menu]] [[Playing with Eric's combobox and the &quot;okaction&quot; param]]" title="$:/StoryList">
+<div list="[[160411: Project Update - Hegart]] [[Main Menu]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.11">
@@ -8190,6 +8199,49 @@ The latest batch of SampleData can be found in our [[SampleData playground|https
 [img[https://dl.dropboxusercontent.com/s/y9if7pqyxp1oacg/160403_elizabeth_aquatic_company_sampledata_example.png]]
 
 [img[https://dl.dropboxusercontent.com/s/hzr8m8pospbe8s5/160403_madison_robinson_sampledata_example.png]]</pre>
+</div>
+<div created="20160411050521655" modified="20160411060105704" tags="" title="160411: Project Update - Hegart">
+<pre>!! Introduction
+Professor Schneider has once again put out a call in the discussion forums for semester project updates. Although it looks like I was the only one to answer that call last time, I'm keen to do another one, as a lot has changed in our project since [[3-Apr-2016|160403: Project Update - Hegart]].
+
+!! Overview
+The purpose of our project is to create a working &quot;Contact Relationship Management&quot; system using TiddlyWiki. The objective is to be able to capture, sort, and view information about communications between the system user and their contacts, whether they be individual persons or organisations.
+
+!! Progress
+My emphasis has moved from back-end to front-end over the last week. We've hit upon a couple of snags with our project (see ''Problems and Issues'' below) which have meant that it's been undesirable to continue working on the back-end at present, when much there is likely to change anyway.
+
+!!! Icons
+So, I've been sinking my teeth into some UI design. I've been overriding many of the default SVG icons with colour PNG icons from the [[Farm Fresh Web Icons|http://www.fatcow.com/fatcow-icons/]] collection. They somehow exude the &quot;simplicity&quot; and &quot;for dummies&quot; atmosphere that I want to cultivate in our project, to help put the end-user at ease.
+
+!!! Menus
+I've also started creating a system of menus, using the ``&lt;&lt;tabs&gt;&gt;`` macro. Our project now has a [[Home|https://dl.dropboxusercontent.com/s/odu3my97ujyxz4h/SampleData-testing.html#Home]] tiddler, which transcludes its menu from the system ``$:/_Menus/`` namespace. The icons in the tabs are added by transcluding the icon into the ``caption`` field of the underlying tab tiddler.
+
+!!! Documentation
+Another little aspect of our project which I've been working on this week is the auto-documentation which the Professor is expecting for our submission, using ViewTemplates. I've even added some documentation to our macros, so that they obtrusively announce their presence with a link, similar to the ViewTemplate links. I also document the documents, by providing a ViewTemplate that applies to the tiddlers in the ``$:/_Macros/`` and ``$:/_Templates/`` namespaces, etc, similar to what I did in my own main {{DesignWrite}} TiddlyWiki, [[here|https://dl.dropboxusercontent.com/s/y5yubous01eyifc/HegartDmishiv-on-DesignWrite.html#%24%3A%2F_Templates%2FSite%2Fmacro-docs]]. These are all collected together in a single documentation tiddler at the top of our ``$:/_`` system namespace, [[here|https://dl.dropboxusercontent.com/s/odu3my97ujyxz4h/SampleData-testing.html#%24%3A%2F_]]. This one, by the way, is transcluded back into our menus under the [img width=&quot;16px&quot;[$:/_Icon/student]] {{DesignWrite}} tab.
+
+!!! SampleData playground
+Our [[SampleData playground|https://dl.dropboxusercontent.com/s/odu3my97ujyxz4h/SampleData-testing.html]] is looking pretty awesome now, with the latest UI changes, if I do say so myself. Remember, this is all still only in a playground for now. The final deliverable for our project will be hosted on GitHub, using Andrew's new GitHub/Dropbox hybrid method of hosting TiddlyWikis. When that happens, we'll simply import all the [[SampleDataExtras|https://dl.dropboxusercontent.com/s/odu3my97ujyxz4h/SampleData-testing.html#SampleDataExtras]] and the [[ui_icons|https://dl.dropboxusercontent.com/s/odu3my97ujyxz4h/SampleData-testing.html#%24%3A%2F_Icon]] from their respective JSON files, along with a fresh set of SampleData, into the new empty.html file we'll be hosting on GitHub. And cross our fingers that it all works!
+
+!! Short-term goals
+To resolve the problems identified below, so that we can push on with this project.
+
+!! Problems and Issues
+!!! Editing in view mode 
+: &lt;p&gt;We've gotten ⅔ of the main functionality of our semester project completed. The elusive ⅓ is about trying to edit an existing tiddler in TiddlyWiki's &quot;view mode&quot;. In the [[semester project instructions|https://dl.dropboxusercontent.com/s/tk91wqty552z6z1/designwrite.html#SemesterProject]], we're asked us to produce something &quot;that is closing in on a finished product&quot;. We've been taking that very literally, and trying hard to prevent having our end-user from even seeing TiddlyWiki. Part of that means preventing them from entering &quot;edit mode&quot; in TiddlyWiki, so we're using ``&lt;$edit-text&gt;`` widgets and Eric Shulman's ``&lt;&lt;combobox&gt;&gt;`` macro a lot in &quot;view mode&quot; instead.&lt;/p&gt;
+
+: &lt;p&gt;The problem we've encountered with this approach is, what happens with the tiddler ``title``? Currently, since TiddlyCRM's inception, the tiddler ``title`` is generated procedurally based on a composite of the other fields in the tiddler. For example, a  Person  tiddler's ``title`` is generated from the ``firstname`` and ``surname`` fields, with a single space between.&lt;/p&gt;
+
+: &lt;p&gt;Where we come unstuck, when editing a tiddler in &quot;view mode&quot;, is what will happen if the end-user edits anything which contributes to the tiddler ``title``? Sure, we can use the same procedure to generate the new ``title``, that's not the problem. The problem is that, if, for instance, the end user changes &quot;Joe Bloggs&quot; to &quot;Jane Doe&quot;, then a whole new tiddler is created for &quot;Jane Doe&quot;, but &quot;Joe Bloggs&quot; still remains in the system, effectively as an orphaned tiddler.&lt;/p&gt;
+
+: &lt;p&gt;We're working on a couple of options to resolve this issue now.&lt;/p&gt;
+
+!!! Populating the combobox options from a specified field
+: &lt;p&gt;Related to the problem above, but a separate issue entirely, is that of how to use the end-user's selection from Eric Shulman's ``&lt;&lt;combobox&gt;&gt;`` macro to filter the options available in a subsequent combobox. For example, when the user selects a ``city``, the available ``suburb`` options should be restricted to those which are available within the given ``city``. Another important use for this facility is in presenting the values of the ``caption`` field rather than the ``text`` field of tiddlers. This may become even more important to us, depending on the outcome of our solution to the previous problem, above.&lt;/p&gt;
+
+!! Demonstration
+The latest batch of SampleData can be found in our [[SampleData playground|https://dl.dropboxusercontent.com/s/odu3my97ujyxz4h/SampleData-testing.html]] and you can play with it live in there. Here is a screenshot to showcase our new UI...
+
+[img[https://dl.dropboxusercontent.com/s/89kcxv6dyfcs4ca/160409_1107_tiddlycrm_welcome_screen.png]]</pre>
 </div>
 <div firstname="Abigail" gender="Female" icon="$:/_Icon/person" imageurl="http://dl.dropboxusercontent.com/s/506rjjx19hpjlig/monoface3.png" surname="Patel" tags="Person SampleData" title="Abigail Patel">
 <pre></pre>

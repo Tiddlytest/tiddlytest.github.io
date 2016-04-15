@@ -387,7 +387,7 @@ Error message and password prompt
 
 <li>160411: Project Update - Hegart</li>
 
-<li>Abigail Fraser</li>
+<li>Abbie Fraser</li>
 
 <li>Abigail Fraser Home Address</li>
 
@@ -3693,7 +3693,7 @@ Search all tiddlers including shadows (custom filter), with auto-popup listbox. 
     &quot;&lt;&lt;myaction&quot;: &quot;Aria Liu Home Address&quot;
 }</pre>
 </div>
-<div <$text="true" created="20160412131422685" employer="" filter="" firstname="" gender="" icon="$:/_Icon/recycle" imageurl="http://dl.dropboxusercontent.com/s/bya0c6edhonrtue/monoface6.png" index="" modified="20160413051141735" name_temp="" surname="" tags="" temptags="[[Wang Used Car Company (2000), Limited]] Person SampleData" title="$:/_Temp/Edit Person">
+<div <$text="true" created="20160412131422685" employer="Alexander Agricultural and Pastoral Company" filter="" firstname="Abbie" gender="Female" icon="$:/_Icon/recycle" imageurl="http://dl.dropboxusercontent.com/s/bya0c6edhonrtue/monoface6.png" index="" modified="20160415032601611" name_temp="" surname="Fraser" tags="" temptags="[[Wang Used Car Company (2000), Limited]] Person SampleData" title="$:/_Temp/Edit Person">
 <pre></pre>
 </div>
 <div city="Garply" created="20160403095302464" modified="20160403231424684" title="$:/_Temp/foobar">
@@ -10164,7 +10164,7 @@ exports.newtiddler = NewtiddlerWidget;
 <div created="20160314134440711" modified="20160322200440052" title="$:/SiteTitle">
 <pre>&lt;center&gt;TiddlyCRM playground&lt;/center&gt;</pre>
 </div>
-<div list="[[Main Menu]] [[Playing with Eric's combobox and the &quot;okaction&quot; param]]" title="$:/StoryList">
+<div list="[[Main Menu]] [[Abbie Fraser]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.11">
@@ -10360,7 +10360,7 @@ The latest batch of SampleData can be found in our [[SampleData playground|https
 
 [img[https://dl.dropboxusercontent.com/s/89kcxv6dyfcs4ca/160409_1107_tiddlycrm_welcome_screen.png]]</pre>
 </div>
-<div firstname="Abigail" gender="Female" icon="$:/_Icon/person" imageurl="http://dl.dropboxusercontent.com/s/nykm19cthrntd5e/129571%3A5288E347.png" surname="Fraser" tags="[[Khandallah Recording Company, Limited]] Person SampleData" title="Abigail Fraser">
+<div created="20160415032556234" firstname="Abbie" gender="Female" icon="$:/_Icon/person" modified="20160415032556236" surname="Fraser" tags="[[Wang Used Car Company (2000), Limited]] Person SampleData" title="Abbie Fraser">
 <pre></pre>
 </div>
 <div box="" city="Company, Limited" icon="$:/_Icon/address" owner="Abigail Fraser" postcode="6012" purpose="Home" street="Karori Road" streetnumber="10/251" suburb="Karori" tags="[[Abigail Fraser]] Address SampleData" title="Abigail Fraser Home Address">
@@ -11198,7 +11198,7 @@ Press this button and the tiddler will be created and opened so you can view it.
 <div box="Private Bag 46" city="Auckland" icon="$:/_Icon/address" owner="East Tamaki Art Company, Limited" postcode="2013" purpose="Postal" street="" streetnumber="" suburb="East Tamaki" tags="[[East Tamaki Art Company, Limited]] Address SampleData" title="East Tamaki Art Company, Limited Postal Address">
 <pre></pre>
 </div>
-<div caption="Edit Person..." created="20160412123831210" entity="Person" icon="$:/_Icon/person-edit" modified="20160413052049974" tags="SampleDataExtras Edit [[Current Developments]]" title="Edit Person">
+<div caption="Edit Person..." created="20160412123831210" entity="Person" icon="$:/_Icon/person-edit" modified="20160415032535351" tags="SampleDataExtras Edit [[Current Developments]]" title="Edit Person">
 <pre>\define newtitlemacro() $(firstname)$ $(surname)$
 \define newtagsmacro() Person NewData [[$(employer)$]]
 \define copyFields(source)
@@ -11230,6 +11230,8 @@ The selection from the combobox is stored as the value of the &quot;filter&quot;
 &lt;$vars firstname={{$:/_Temp/Edit Person!!firstname}}
        surname={{$:/_Temp/Edit Person!!surname}}
        employer={{$:/_Temp/Edit Person!!employer}} &gt;
+       
+       &lt;$action-deletetiddler $tiddler={{$:/_Temp/Edit Person!!filter}}/&gt;
 &lt;$action-setfield $tiddler=&lt;&lt;newtitlemacro&gt;&gt; firstname={{$:/_Temp/Edit Person!!firstname}} surname={{$:/_Temp/Edit Person!!surname}} gender={{$:/_Temp/Edit Person!!gender}} tags={{$:/_Temp/Edit Person!!temptags}} icon=&quot;$:/_Icon/person&quot; /&gt;
 &lt;$action-navigate $to=&lt;&lt;newtitlemacro&gt;&gt; /&gt;
 &lt;/$vars&gt;

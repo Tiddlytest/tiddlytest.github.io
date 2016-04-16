@@ -837,6 +837,8 @@ Error message and password prompt
 
 <li>DesignWrite</li>
 
+<li>Developments}}--1772721641</li>
+
 <li>Diagrams</li>
 
 <li>Documentation</li>
@@ -992,8 +994,6 @@ Error message and password prompt
 <li>Email to Wellington Bakery Company, Limited on 11-Aug-2015 at 06:02</li>
 
 <li>Email to Willow Campbell on 03-Oct-2015 at 19:00</li>
-
-<li>Emily Yang</li>
 
 <li>Emily Yang Home Address</li>
 
@@ -2575,6 +2575,8 @@ Error message and password prompt
 
 <li>Ryan Robinson Personal Mobile Number</li>
 
+<li>SampleTabThree--1772721641</li>
+
 <li>Samuel Brown</li>
 
 <li>Samuel Brown Home Address</li>
@@ -3699,7 +3701,7 @@ Search all tiddlers including shadows (custom filter), with auto-popup listbox. 
     &quot;&lt;&lt;myaction&quot;: &quot;Aria Liu Home Address&quot;
 }</pre>
 </div>
-<div <$text="true" created="20160412131422685" employer="" filter="ab" firstname="" gender="" icon="$:/_Icon/recycle" imageurl="http://dl.dropboxusercontent.com/s/6j0oggt1h3wy0vt/monoface4.png" index="" modified="20160415050629382" name_temp="" origintiddler="" surname="" tags="" temptags="Person SampleData" title="$:/_Temp/Edit Person">
+<div created="20160416175022449" filter="" firstname="Sophie" gender="Female" icon="$:/_Icon/recycle" imageurl="http://dl.dropboxusercontent.com/s/cr0c0pfnn9ispeu/monoface1.png" index="" modified="20160416180004281" origintiddler="Sophie Johnston" surname="Johnston" tags="" temptags="Person SampleData" title="$:/_Temp/Edit Person">
 <pre></pre>
 </div>
 <div city="Garply" created="20160403095302464" modified="20160403231424684" title="$:/_Temp/foobar">
@@ -10170,7 +10172,7 @@ exports.newtiddler = NewtiddlerWidget;
 <div created="20160314134440711" modified="20160322200440052" title="$:/SiteTitle">
 <pre>&lt;center&gt;TiddlyCRM playground&lt;/center&gt;</pre>
 </div>
-<div list="[[Main Menu]] [[Edit Person]]" title="$:/StoryList">
+<div list="[[$:/_Temp/Edit Person]] [[Edit Person]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.11">
@@ -11104,7 +11106,7 @@ Press this button and the tiddler will be created and opened so you can view it.
 <div city="Corge" created="20160403091859880" modified="20160403091912731" tags="foobar" title="corge">
 <pre></pre>
 </div>
-<div color="#25f903" created="20160322220912993" modified="20160322222018626" tags="" title="Current Developments">
+<div caption="!! Current Developments &lt;&lt;list-links filter:&quot;[tag{!!title}]&quot;&gt;&gt;" color="#25f903" created="20160322220912993" modified="20160416081901413" tags="" title="Current Developments">
 <pre>!! Current Developments
 &lt;&lt;list-links filter:&quot;[tag{!!title}]&quot;&gt;&gt;</pre>
 </div>
@@ -11166,6 +11168,9 @@ Press this button and the tiddler will be created and opened so you can view it.
 <div bag="default" created="20160120064702461" creator="HegartDmishiv" modified="20160403001149693" modifier="HegartDmishiv" revision="0" tags="" title="DesignWrite" type="text/vnd.tiddlywiki">
 <pre>''&amp;#123;&amp;#123;DesignWrite&amp;#125;&amp;#125;''</pre>
 </div>
+<div created="20160416081644262" modified="20160416081646804" title="Developments}}--1772721641">
+<pre>menu</pre>
+</div>
 <div created="20160323221416702" modified="20160323223906664" tags="[[Project Resources]]" title="Diagrams">
 <pre>!! Information Flow
 {{Information Flow}}
@@ -11204,14 +11209,14 @@ Press this button and the tiddler will be created and opened so you can view it.
 <div box="Private Bag 46" city="Auckland" icon="$:/_Icon/address" owner="East Tamaki Art Company, Limited" postcode="2013" purpose="Postal" street="" streetnumber="" suburb="East Tamaki" tags="[[East Tamaki Art Company, Limited]] Address SampleData" title="East Tamaki Art Company, Limited Postal Address">
 <pre></pre>
 </div>
-<div caption="Edit Person..." created="20160412123831210" entity="Person" icon="$:/_Icon/person-edit" modified="20160415050113847" tags="SampleDataExtras Edit [[Current Developments]]" title="Edit Person">
+<div caption="Edit Person..." created="20160412123831210" entity="Person" icon="$:/_Icon/person-edit" modified="20160416181020774" tags="SampleDataExtras Edit [[Current Developments]]" title="Edit Person">
 <pre>\define newtitlemacro() $(firstname)$ $(surname)$
 \define newtagsmacro() Person NewData [[$(employer)$]]
 \define copyFields(source)
 &lt;!--
 A macro to set the values of the fields in the temporary system tiddler. The particular source tiddler to copy from is specified in the $source$ parameter. Also copies the selection from the combobox to a temporary field {{$:/_Temp/Edit Person!!origintiddler}}.
 --&gt;
-&lt;$action-setfield $tiddler=&quot;$:/_Temp/Edit Person&quot; firstname={{$source$!!firstname}} surname={{$source$!!surname}} gender={{$source$!!gender}} imageurl={{$source$!!imageurl}} temptags={{$source$!!tags}} /&gt;
+&lt;$action-setfield $tiddler=&quot;$:/_Temp/Edit Person&quot; firstname={{$source$!!firstname}} surname={{$source$!!surname}} gender={{$source$!!gender}} imageurl={{$source$!!imageurl}} /&gt;
 &lt;$action-setfield $tiddler=&quot;$:/_Temp/Edit Person&quot; origintiddler={{$:/_Temp/Edit Person!!filter}}/&gt;
 \end
 
@@ -11224,7 +11229,6 @@ Current value of ``{{$:/_Temp/Edit Person!!origintiddler}}`` is {{$:/_Temp/Edit 
 &lt;hr&gt;
 
 !!Testing
-
 &lt;$macrocall $name=&quot;combobox&quot; 
   tiddler=&quot;$:/_Temp/Edit Person&quot;
   field=&quot;filter&quot; filter=&quot;[tag[Person]]&quot;
@@ -11240,6 +11244,7 @@ The selection from the combobox is stored as the value of the &quot;filter&quot;
 * ''First name:'' &lt;$edit-text tiddler=&quot;$:/_Temp/Edit Person&quot; field=&quot;firstname&quot; placeholder=&quot;Type first name here...&quot; /&gt;
 * ''Surname:'' &lt;$edit-text tiddler=&quot;$:/_Temp/Edit Person&quot; field=&quot;surname&quot; placeholder=&quot;Type surname here...&quot; /&gt;
 * ''Gender:'' &lt;$radio  tiddler=&quot;$:/_Temp/Edit Person&quot; field=&quot;gender&quot; value=&quot;Male&quot;&gt;Male&lt;/$radio&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;$radio  tiddler=&quot;$:/_Temp/Edit Person&quot; field=&quot;gender&quot; value=&quot;Female&quot;&gt;Female&lt;/$radio&gt;
+* ''Image:'' &lt;$edit-text tiddler=&quot;$:/_Temp/Edit Person&quot; field=&quot;imageurl&quot; placeholder=&quot;Paste image URL here...&quot; /&gt;
 * ''Employee of:'' &lt;&lt;combobox tiddler:&quot;$:/_Temp/Edit Person&quot; field:&quot;employer&quot; placeholder:&quot;Type or select employer...&quot; filter:&quot;[tag[Organisation]]&quot;&gt;&gt;
 
 
@@ -11247,18 +11252,14 @@ The selection from the combobox is stored as the value of the &quot;filter&quot;
 &lt;$vars firstname={{$:/_Temp/Edit Person!!firstname}}
        surname={{$:/_Temp/Edit Person!!surname}}
        employer={{$:/_Temp/Edit Person!!employer}} &gt;
-&lt;$action-setfield $tiddler=&lt;&lt;newtitlemacro&gt;&gt; firstname={{$:/_Temp/Edit Person!!firstname}} surname={{$:/_Temp/Edit Person!!surname}} gender={{$:/_Temp/Edit Person!!gender}} tags={{$:/_Temp/Edit Person!!temptags}} icon=&quot;$:/_Icon/person&quot; /&gt;
+&lt;$action-deletetiddler $tiddler={{$:/_Temp/Edit Person!!origintiddler}}/&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;newtitlemacro&gt;&gt; firstname={{$:/_Temp/Edit Person!!firstname}} surname={{$:/_Temp/Edit Person!!surname}} gender={{$:/_Temp/Edit Person!!gender}} imageurl={{$:/_Temp/Edit Person!!imageurl}} tags=&lt;&lt;newtagsmacro&gt;&gt; icon=&quot;$:/_Icon/person&quot; /&gt;
 &lt;$action-navigate $to=&lt;&lt;newtitlemacro&gt;&gt; /&gt;
 &lt;/$vars&gt;
-&lt;$action-deletetiddler $tiddler={{$:/_Temp/Edit Person!!origintiddler}}/&gt;
 &lt;/$button&gt;
 
-
-
 &lt;$button&gt;Clear Form
-
-&lt;$action-setfield $tiddler='$:/_Temp/Edit Person' name_temp='' firstname='' surname='' gender='' employer='' tags='' origintiddler=''/&gt;
-
+&lt;$action-setfield $tiddler=&quot;$:/_Temp/Edit Person&quot; firstname=&quot;&quot; surname=&quot;&quot; gender=&quot;&quot; employer=&quot;&quot; tags=&quot;&quot; imageurl=&quot;&quot; origintiddler=&quot;&quot;/&gt;
 &lt;/$button&gt;
 </pre>
 </div>
@@ -11470,9 +11471,6 @@ The selection from the combobox is stored as the value of the &quot;filter&quot;
 <pre></pre>
 </div>
 <div day="3" direction="to" hourstart="19" icon="$:/_Icon/communication" method="Email" minutestart="0" month="10" organisation="" person="Willow Campbell" tags="[[Willow Campbell]] Communication SampleData" title="Email to Willow Campbell on 03-Oct-2015 at 19:00" year="2015">
-<pre></pre>
-</div>
-<div firstname="Emily" gender="Female" icon="$:/_Icon/person" imageurl="http://dl.dropboxusercontent.com/s/2hseug61kcsrn34/129528%3AE392F930.png" surname="Yang" tags="Person SampleData" title="Emily Yang">
 <pre></pre>
 </div>
 <div box="" city="Auckland" icon="$:/_Icon/address" owner="Emily Yang" postcode="0620" purpose="Home" street="Forrest Hill Road" streetnumber="281" suburb="Forrest Hill" tags="[[Emily Yang]] Address SampleData" title="Emily Yang Home Address">
@@ -13145,8 +13143,10 @@ Generate New Contact
 <div email="maia@williams.co.nz" icon="$:/_Icon/email" owner="Maia Williams" purpose="Personal" tags="[[Maia Williams]] [[Email Address]] SampleData" title="Maia Williams Personal Email">
 <pre></pre>
 </div>
-<div created="20160322215035733" modified="20160409064256531" tags="" title="Main Menu">
+<div caption="{{Current Developments}}" created="20160322215035733" modified="20160416083129699" tags="" title="Main Menu">
 <pre>The playground for TiddlyCRM, a place to go to break things, put them back together and hopefully make innovations!
+
+&lt;&lt;tabs &quot;Main Menu&quot; SampleTabTwo SampleTabThree SampleTabFour&quot; &quot;SampleTabOne&quot; &quot;$:/state/tab1&quot;&gt;&gt;
 
 {{Current Developments}}
 
@@ -13156,7 +13156,9 @@ Generate New Contact
 
 {{Data Sources}}
 
-{{Project Resources}}</pre>
+{{Project Resources}}
+
+</pre>
 </div>
 <div icon="$:/_Icon/organisation" tags="Organisation SampleData" title="Martin Butchery Company, Limited">
 <pre></pre>
@@ -14183,6 +14185,9 @@ Fairly straightforward, this is the macro definition, with four parameters. He u
 <div areacode="27" countrycode="64" exchangecode="642" icon="$:/_Icon/mobile" owner="Ryan Robinson" phonenumber="1131" purpose="Personal" tags="[[Ryan Robinson]] [[Phone Number]] SampleData" title="Ryan Robinson Personal Mobile Number" type="Mobile">
 <pre></pre>
 </div>
+<div created="20160416174527224" modified="20160416174528992" title="SampleTabThree--1772721641">
+<pre>Menu</pre>
+</div>
 <div firstname="Samuel" gender="Male" icon="$:/_Icon/person" imageurl="http://dl.dropboxusercontent.com/s/q5cvrds6qecm7c5/gombinoscope2.png" surname="Brown" tags="[[Wilson Fashion Company (2013), Limited]] Person SampleData" title="Samuel Brown">
 <pre></pre>
 </div>
@@ -14390,7 +14395,7 @@ Fairly straightforward, this is the macro definition, with four parameters. He u
 <div areacode="27" countrycode="64" exchangecode="398" icon="$:/_Icon/mobile" owner="Sophia Wu" phonenumber="7790" purpose="Personal" tags="[[Sophia Wu]] [[Phone Number]] SampleData" title="Sophia Wu Personal Mobile Number" type="Mobile">
 <pre></pre>
 </div>
-<div firstname="Sophie" gender="Female" icon="$:/_Icon/person" imageurl="http://dl.dropboxusercontent.com/s/cr0c0pfnn9ispeu/monoface1.png" surname="Johnston" tags="Person SampleData" title="Sophie Johnston">
+<div created="20160416181033197" firstname="Sophie" gender="Female" icon="$:/_Icon/person" imageurl="http://dl.dropboxusercontent.com/s/cr0c0pfnn9ispeu/monoface1.png" modified="20160416181033201" surname="Johnston" tags="Person NewData" title="Sophie Johnston">
 <pre></pre>
 </div>
 <div box="" city="Wellington" icon="$:/_Icon/address" owner="Sophie Johnston" postcode="6022" purpose="Home" street="Strathmore Avenue" streetnumber="353" suburb="Strathmore Park" tags="[[Sophie Johnston]] Address SampleData" title="Sophie Johnston Home Address">

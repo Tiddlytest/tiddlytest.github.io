@@ -10277,7 +10277,7 @@ exports.newtiddler = NewtiddlerWidget;
 <div created="20160314134440711" modified="20160322200440052" title="$:/SiteTitle">
 <pre>&lt;center&gt;TiddlyCRM playground&lt;/center&gt;</pre>
 </div>
-<div list="[[Follow Up with Liam Wu by 01-Dec-2016 at 09:39pm]] $:/_Template/viewActionPoint [[Main Menu]]" title="$:/StoryList">
+<div list="" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.11">
@@ -10619,9 +10619,13 @@ The latest batch of SampleData can be found in our [[SampleData playground|https
 <div created="20160419033925641" modified="20160419034720588" tags="" title="Admin">
 <pre>&lt;&lt;tabs &quot;[[Add Contact]] [[Add Company]] [[Edit Contact]] [[Edit Company]]&quot; &quot;Add Contact&quot; &quot;$:/state/tab2&quot; &quot;tc-vertical&quot;&gt;&gt;</pre>
 </div>
-<div created="20160419033143392" modified="20160419033522339" tags="[[Current Developments]]" title="Agenda">
-<pre>!TBA (Placeholder)
-``A list of 'to-do's in chronological order by date. This will be generated based on the Action Points field``</pre>
+<div created="20160419033143392" modified="20160420130854910" tags="[[Current Developments]]" title="Agenda">
+<pre>&lt;$list filter=&quot;[tag[Action Point]sort[timestamp-due]!tag[done]]&quot;&gt;
+
+&lt;$link to={{!!title}}&gt;&lt;$image source=&quot;$:/_Icon/actionpoint&quot; tooltip=&quot;Go to action point.&quot; width=&quot;12px&quot; height=&quot;auto&quot; /&gt;&lt;/$link&gt; &lt;$link to={{!!person}}&gt;&lt;$image source=&quot;$:/_Icon/person-go&quot; tooltip=&quot;Go to person.&quot; width=&quot;12px&quot; height=&quot;auto&quot; /&gt;&lt;/$link&gt; &lt;$link to={{!!organisation}}&gt;&lt;$image source=&quot;$:/_Icon/organisation-go&quot; tooltip=&quot;Go to organisation.&quot; width=&quot;12px&quot; height=&quot;auto&quot; /&gt;&lt;/$link&gt; &lt;$checkbox tooltip=&quot;Mark as done.&quot; tag=&quot;done&quot;&gt; ''&lt;$view field=&quot;timestamp-due&quot; format=&quot;date&quot; template=&quot;DDD DDth MMM YYYY&quot; /&gt;:''&lt;br&gt;{{!!title}}&lt;/$checkbox&gt;
+&lt;/$list&gt;
+
+</pre>
 </div>
 <div caption="{{!!title}}" icon="$:/_Icon/organisation" modified="20160420033057437" modifier="SampleData" tags="Organisation SampleData" title="Alexander Travel Company, Limited">
 <pre></pre>
@@ -11147,7 +11151,7 @@ The latest batch of SampleData can be found in our [[SampleData playground|https
 
 &lt;&lt;list-links filter:&quot;[tag[Completed Applications]]&quot;&gt;&gt;</pre>
 </div>
-<div action="Consult with" caption="{{!!title}}" communication="Fax to Zoe Thomson on 11-Feb-2015 at 04:06pm" icon="$:/_Icon/actionpoint" modified="20160420033057440" modifier="SampleData" organisation="Glen Eden Advocacy Society, Incorporated" person="" tags="[[Fax to Zoe Thomson on 11-Feb-2015 at 04:06pm]] [[Glen Eden Advocacy Society, Incorporated]] [[Action Point]] SampleData" timestamp-due="20160402122100000" title="Consult with Glen Eden Advocacy Society, Incorporated by 02-Apr-2016 at 12:21pm">
+<div action="Consult with" caption="{{!!title}}" communication="Fax to Zoe Thomson on 11-Feb-2015 at 04:06pm" created="20160420124551428" icon="$:/_Icon/actionpoint" modified="20160420124551429" modifier="SampleData" organisation="Glen Eden Advocacy Society, Incorporated" person="" tags="[[Fax to Zoe Thomson on 11-Feb-2015 at 04:06pm]] [[Glen Eden Advocacy Society, Incorporated]] [[Action Point]] SampleData done" timestamp-due="20160402122100000" title="Consult with Glen Eden Advocacy Society, Incorporated by 02-Apr-2016 at 12:21pm">
 <pre></pre>
 </div>
 <div action="Consult with" caption="{{!!title}}" communication="Phone Call from Huang Boat Company, Limited on 03-Dec-2014 at 06:31am" icon="$:/_Icon/actionpoint" modified="20160420033057441" modifier="SampleData" organisation="Glen Eden Advocacy Society, Incorporated" person="" tags="[[Phone Call from Huang Boat Company, Limited on 03-Dec-2014 at 06:31am]] [[Glen Eden Advocacy Society, Incorporated]] [[Action Point]] SampleData" timestamp-due="20161103120500000" title="Consult with Glen Eden Advocacy Society, Incorporated by 03-Nov-2016 at 12:05pm">
@@ -14651,7 +14655,7 @@ Fairly straightforward, this is the macro definition, with four parameters. He u
 <div action="Send Reply to" caption="{{!!title}}" communication="Email from Samuel Thompson on 01-Sep-2013 at 08:50am" icon="$:/_Icon/actionpoint" modified="20160420033057441" modifier="SampleData" organisation="" person="Samuel Thompson" tags="[[Email from Samuel Thompson on 01-Sep-2013 at 08:50am]] [[Samuel Thompson]] [[Action Point]] SampleData" timestamp-due="20160509171600000" title="Send Reply to Samuel Thompson by 09-May-2016 at 05:16pm">
 <pre></pre>
 </div>
-<div action="Send Reply to" caption="{{!!title}}" communication="Phone Call to Takapuna Real Estate Charitable Trust on 26-Apr-2015 at 09:30am" icon="$:/_Icon/actionpoint" modified="20160420033057442" modifier="SampleData" organisation="Takapuna Real Estate Charitable Trust" person="" tags="[[Phone Call to Takapuna Real Estate Charitable Trust on 26-Apr-2015 at 09:30am]] [[Takapuna Real Estate Charitable Trust]] [[Action Point]] SampleData" timestamp-due="20160403081200000" title="Send Reply to Takapuna Real Estate Charitable Trust by 03-Apr-2016 at 08:12am">
+<div action="Send Reply to" caption="{{!!title}}" communication="Phone Call to Takapuna Real Estate Charitable Trust on 26-Apr-2015 at 09:30am" created="20160420130738281" icon="$:/_Icon/actionpoint" modified="20160420130738281" modifier="SampleData" organisation="Takapuna Real Estate Charitable Trust" person="" tags="[[Phone Call to Takapuna Real Estate Charitable Trust on 26-Apr-2015 at 09:30am]] [[Takapuna Real Estate Charitable Trust]] [[Action Point]] SampleData done" timestamp-due="20160403081200000" title="Send Reply to Takapuna Real Estate Charitable Trust by 03-Apr-2016 at 08:12am">
 <pre></pre>
 </div>
 <div action="Send Reply to" caption="{{!!title}}" communication="Email from Wellington Butchery Company, Limited on 02-Aug-2015 at 03:01pm" icon="$:/_Icon/actionpoint" modified="20160420033057440" modifier="SampleData" organisation="Wellington Butchery Company, Limited" person="" tags="[[Email from Wellington Butchery Company, Limited on 02-Aug-2015 at 03:01pm]] [[Wellington Butchery Company, Limited]] [[Action Point]] SampleData" timestamp-due="20160424195300000" title="Send Reply to Wellington Butchery Company, Limited by 24-Apr-2016 at 07:53pm">

@@ -2895,6 +2895,8 @@ Error message and password prompt
 
 <li>Thomas Advocacy Society, Incorporated Postal Address</li>
 
+<li>Using the timeline core macro</li>
+
 <li>Visit from Auckland Recording Company, Limited on 03-Dec-2013 at 10:58am</li>
 
 <li>Visit from Beau Zhou on 29-Sep-2016 at 10:06pm</li>
@@ -10277,7 +10279,7 @@ exports.newtiddler = NewtiddlerWidget;
 <div created="20160314134440711" modified="20160322200440052" title="$:/SiteTitle">
 <pre>&lt;center&gt;TiddlyCRM playground&lt;/center&gt;</pre>
 </div>
-<div list="Agenda [[Riley White]] [[Georgia Stationery Company (1992), Limited]] [[Main Menu]]" title="$:/StoryList">
+<div list="[[Using the timeline core macro]] [[Main Menu]] Agenda" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.11">
@@ -14896,6 +14898,15 @@ Tag to add: &lt;$select tiddler='$Organisation List' field='tag_temp'&gt;
 </div>
 <div box="PO Box 76-8128" caption="{{!!title}}" city="Auckland" icon="$:/_Icon/address" modified="20160420033057448" modifier="SampleData" owner="Thomas Advocacy Society, Incorporated" postcode="1052" purpose="Postal" street="" streetnumber="" suburb="Parnell" tags="[[Thomas Advocacy Society, Incorporated]] Address SampleData" title="Thomas Advocacy Society, Incorporated Postal Address">
 <pre></pre>
+</div>
+<div created="20160420221758816" modified="20160420225511677" tags="[[Current Developments]]" title="Using the timeline core macro">
+<pre>```
+&lt;&lt;timeline dateField:timestamp-due limit:30 subfilter:&quot;tag[Action Point]sort[timestamp-due]&quot; format:&quot;DDD DDth MMM YYYY&quot;&gt;&gt;
+```
+
+Even though I've specified ``sort[timestamp-due]``, it seems both the inner and outer filters are in descending order, not ascending. I've tried ``!sort`` as well. Any idea how to make this ascending?
+
+&lt;&lt;timeline dateField:timestamp-due limit:30 subfilter:&quot;tag[Action Point]sort[timestamp-due]&quot; format:&quot;DDD DDth MMM YYYY&quot;&gt;&gt;</pre>
 </div>
 <div caption="{{!!title}}" direction="from" icon="$:/_Icon/communication" method="Visit" modified="20160420033057400" modifier="SampleData" organisation="Auckland Recording Company, Limited" person="" tags="[[Auckland Recording Company, Limited]] Communication SampleData" timestamp-start="20131203105800000" title="Visit from Auckland Recording Company, Limited on 03-Dec-2013 at 10:58am">
 <pre></pre>

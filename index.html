@@ -359,6 +359,8 @@ Error message and password prompt
 
 <li>$:/_Temp/Person</li>
 
+<li>$:/_Template/viewActionPoint</li>
+
 <li>$:/_Template/viewOrganisation</li>
 
 <li>$:/_Template/viewPerson</li>
@@ -3787,6 +3789,18 @@ Search all tiddlers including shadows (custom filter), with auto-popup listbox. 
 </div>
 <div created="20160405082036248" employer="Aria Travel Company, Limited" firstname="Abigail" gender="Female" modified="20160415050511047" name_temp="" surname="Fraser" tags="" title="$:/_Temp/Person">
 <pre></pre>
+</div>
+<div created="20160420121040767" modified="20160420122920914" tags="$:/tags/ViewTemplate [[Data Sources]]" title="$:/_Template/viewActionPoint">
+<pre>&lt;$list filter=&quot;[is[current]tag[Action Point]]&quot;&gt;
+
+&lt;li&gt; ''Raw Timestamp:'' {{!!timestamp-due}}
+&lt;li&gt; ''Date:'' &lt;$view field=&quot;timestamp-due&quot; format=&quot;date&quot; template=&quot;DDD DDth MMM YYYY&quot; /&gt;
+&lt;li&gt; ''Time:'' &lt;$view field=&quot;timestamp-due&quot; format=&quot;date&quot; template=&quot;hh12:0mmpm&quot; /&gt;
+
+
+&lt;hr&gt;
+
+[img width=&quot;10px&quot; [$:/_Icon/code-template]] &lt;small&gt;''ViewTemplate:'' [[$:/_Template/viewActionPoint]]&lt;/small&gt;</pre>
 </div>
 <div created="20160324152421007" icon="$:/_Icon/code-template" modified="20160419025958655" origin="Original Work." purpose="Displays the details of an &lt;&lt;tag Organisation&gt;&gt;when it is viewed." tags="$:/tags/ViewTemplate SampleDataExtras [[Data Sources]]" title="$:/_Template/viewOrganisation">
 <pre>&lt;$list filter=&quot;[is[current]tag[Organisation]]&quot;&gt;
@@ -10263,7 +10277,7 @@ exports.newtiddler = NewtiddlerWidget;
 <div created="20160314134440711" modified="20160322200440052" title="$:/SiteTitle">
 <pre>&lt;center&gt;TiddlyCRM playground&lt;/center&gt;</pre>
 </div>
-<div list="[[Purge SampleData]]" title="$:/StoryList">
+<div list="[[Follow Up with Liam Wu by 01-Dec-2016 at 09:39pm]] $:/_Template/viewActionPoint [[Main Menu]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.11">
